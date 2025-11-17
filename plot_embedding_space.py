@@ -5,22 +5,27 @@ import pylab as pl
 import numpy as np
 import pandas as pd
 from tqdm import tqdm
+import os, sys
 
 import torch
 import torchvision.transforms as T
 from torch.utils.data import DataLoader
+from torch.utils.data import ConcatDataset
+
 
 from sklearn.decomposition import PCA
 from umap import UMAP
 
+
+from byol.utilities import embed_dataset
 from byol.datasets import RGZ108k
 from byol.datasets import MBFRFull, MBHybrid, MBFRConfident, MBFRUncertain
 from byol.models import BYOL
 
-# ================== BYOL checkpoint ==================
-ckpt = "/share/nas2_3/yhuang/byol/runscripts/byol.ckpt"
+#Define location of checkpoint file for pre-trained BYOL model:
+ckpt = '/share/nas2_3/yhuang/byol/runscripts/byol.ckpt'
 
-# Load model from checkpoint (pre-trained weights):
+#Load model from checkpoint (pre-trained weights):
 byol = BYOL.load_from_checkpoint(ckpt)
 byol.eval()
 encoder = byol.encoder
@@ -28,19 +33,11 @@ encoder.eval()
 config = byol.config
 mu, sig = config["data"]["mu"], config["data"]["sig"]
 
-
-# ================== Reducer class ==================
+#Define a class of functions to encode the data through the model and perform dimensionality reduction:
 class Reducer:
-    def __init__(
-        self,
-        encoder,
-        PCA_COMPONENTS,
-        UMAP_N_NEIGHBOURS,
-        UMAP_MIN_DIST,
-        METRIC,
-        embedding=None,
-        seed=42,
-    ):
+
+    def __init__(self, encoder, PCA_COMPONENTS, UMAP_N_NEIGHBOURS, UMAP_MIN_DIST, METRIC, embedding=None, seed=42):
+
         self.encoder = encoder
         self.pca = PCA(n_components=PCA_COMPONENTS, random_state=seed)
         self.umap = UMAP(
@@ -53,9 +50,7 @@ class Reducer:
 
         if embedding is not None:
             if not os.path.exists(embedding):
-                print(
-                    "Specified embedding file does not exist - will compute embedding"
-                )
+                print("Specified embedding file does not exist - will compute embedding")
                 self.embedded = False
             else:
                 self.filename = embedding
@@ -64,50 +59,59 @@ class Reducer:
             self.embedded = False
 
     def read_file(self):
-        print(f"Reading embedding from file: {self.filename}")
+
+        print("Reading embedding from file: {}".format(self.filename))
+
         df = pd.read_parquet(self.filename)
         features = df[[f"feat_{i}" for i in range(512)]].values
-        if "target" in df.columns:
+        if 'target' in df.columns:
             targets = df["target"].values
         else:
             targets = np.ones(features.shape[0])
+
         return features, targets
 
     def write_file(self, filename):
+
         cols = [f"feat_{i}" for i in range(512)]
         print(self.features.shape, self.targets.shape)
         df = pd.DataFrame(data=self.features, columns=cols)
         df.to_parquet(filename)
+
         return
 
     def embed_dataset(self, data, batch_size=400):
         train_loader = DataLoader(data, batch_size, shuffle=False)
-        device = next(self.encoder.parameters()).device
+        device = next(encoder.parameters()).device
         feature_bank = []
-
-        for batch in tqdm(train_loader):
-            if len(batch) > 2:
-                x = batch
+        target_bank = []
+        for data in tqdm(train_loader):
+            # print(len(data), data[0].shape)
+            # Load data and move to correct device
+            if len(data) > 2:
+                x = data
             else:
-                x, y = batch
+                x, y = data
 
-            with torch.no_grad():
-                x_enc = self.encoder(x.to(device))
+            x_enc = encoder(x.to(device))
 
-            feature_bank.append(x_enc.squeeze().cpu())
+            feature_bank.append(x_enc.squeeze().detach().cpu())
+            # target_bank.append(y['size'].detach().cpu())
 
+        # Save full feature bank for validation epoch
         features = torch.cat(feature_bank)
+        # targets = torch.cat(target_bank)
         targets = np.ones(features.shape[0])
+
         return features, targets
 
     def fit(self, data=None):
+
         print("Fitting reducer")
 
-        if data is not None:
-            features, targets = self.embed_dataset(data)
-        elif data is None and self.embedded:
-            features, targets = self.read_file()
-        else:
+        if data != None: features, targets = self.embed_dataset(data)
+        if data == None and self.embedded: features, targets = self.read_file()
+        if data == None and not self.embedded:
             print("No data/embedding provided - exiting")
             return
 
@@ -116,18 +120,20 @@ class Reducer:
 
         self.pca.fit(self.features)
         self.umap.fit(self.pca.transform(self.features))
+
         return
 
     def transform(self, data=None):
+
         print("Performing transformation")
 
-        if data is not None:
+        if data != None:
             x, _ = self.embed_dataset(data)
-        elif data is None and hasattr(self, "features"):
+        elif data == None and hasattr(self, 'features'):
             x = self.features
-        elif data is None and not hasattr(self, "features") and self.embedded:
+        elif data == None and not hasattr(self, 'features') and self.embedded:
             x, _ = self.read_file()
-        else:
+        elif data == None and not hasattr(self, 'features') and not self.embedded:
             print("No data/embedding provided - exiting")
             return
 
@@ -140,9 +146,8 @@ class Reducer:
         x = self.pca.transform(x)
         return x
 
-
-# ================== Datasets ==================
-paths = {}
+# Load the datasets (RGZ and MiraBest):
+paths={}
 paths["rgz"] = "/share/nas2_3/yhuang/_data/rgz"
 paths["mb"] = "/share/nas2_3/yhuang/_data/mb"
 
@@ -160,48 +165,33 @@ rgz = RGZ108k(
     transform=transform,
     download=False,
     remove_duplicates=False,
-    cut_threshold=25,  # remove sources below this size threshold [arcsec]
-    mb_cut=True,  # remove sources that are also in MiraBest
-)
+    cut_threshold=25,           # remove sources below this size threshold [arcsec]
+    mb_cut=True,                # remove sources that are also in MiraBest
+    )
 
-mb = MBFRFull(
-    paths["mb"],
-    train=True,
-    transform=transform,
-    download=False,
-    aug_type="torchvision",
-)
+mb = MBFRFull(paths["mb"],
+              train=True,
+              transform=transform,
+              download=False,
+              aug_type="torchvision"
+             )
 
-# ================== Dimensionality reduction hyperparameters ==================
+# Define the hyper-parameters for dimensionality reduction:
 PCA_COMPONENTS = 200
 UMAP_N_NEIGHBOURS = 75
 UMAP_MIN_DIST = 0.01
 METRIC = "cosine"
 
-# 推荐：把 embedding 文件放在你有写权限的地方
-embedding_file = "/share/nas2_3/yhuang/_data/rgz"
+embedding = '/share/nas2_3/yhuang/_data/rgz/rgz_embedding_25.parquet'
 
-reducer = Reducer(
-    encoder,
-    PCA_COMPONENTS,
-    UMAP_N_NEIGHBOURS,
-    UMAP_MIN_DIST,
-    METRIC,
-    embedding=embedding_file,
-)
-
-# ======= 自动判断：第一次运行 or 之后重复运行 =======
-if os.path.exists(embedding_file):
-    print("Embedding file found. Loading features from disk.")
-    reducer.fit()  # 使用 parquet 中的特征
-else:
-    print("Embedding file NOT found. Computing features from RGZ (this may take a while).")
-    reducer.fit(data=rgz)
-    reducer.write_file(embedding_file)
+# Fit the dimensionality reduction and transform the data through it (takes about 20 mins on CPU):
+reducer = Reducer(encoder, PCA_COMPONENTS, UMAP_N_NEIGHBOURS, UMAP_MIN_DIST, METRIC, embedding='rgz_embedding_25.parquet')
+reducer.fit()
 
 X_umap = reducer.transform()
 
-# ================== Plot (Figure 2 style) ==================
+reducer.write_file(embedding)
+
 alpha = 0.6
 marker_size = 0.1
 fig_size = (10 / 3, 3)
@@ -213,11 +203,12 @@ data_loader = DataLoader(rgz, batch_size=len(rgz), shuffle=False)
 _, y = next(iter(data_loader))
 
 fig, ax = pl.subplots()
-# fig.set_size_inches(fig_size)
+#fig.set_size_inches(fig_size)
 
 scatter = ax.scatter(
     X_umap[:, 0],
     X_umap[:, 1],
+#    c=reducer.targets,
     c=y["size"].numpy(),
     cmap="Spectral",
     s=marker_size,
@@ -226,7 +217,6 @@ scatter = ax.scatter(
     vmax=100,
     alpha=alpha,
 )
-
 pl.gca().set_aspect("equal", "datalim")
 cbar = fig.colorbar(scatter)
 cbar.ax.tick_params(labelsize=fontsize)
@@ -236,13 +226,18 @@ ax.get_xaxis().set_visible(False)
 ax.get_yaxis().set_visible(False)
 fig.savefig("byol_umap_rgz.png", bbox_inches="tight", pad_inches=0.05, dpi=600)
 
-# ===== 后面 RGZ + MB 的图你以后再打开 =====
+
+
+# RGZ & MB representation (Fig 3 in Inigo's paper)
 # rgz_umap = reducer.transform()
 # mb_umap = reducer.transform(mb)
 #
 # fig, ax = pl.subplots()
+# #fig.set_size_inches(fig_size)
+#
 # ax.scatter(rgz_umap[:, 0], rgz_umap[:, 1], label="RGZ DR1", marker=marker, s=marker_size, alpha=alpha)
-# ax.scatter(mb_umap[:, 0], mb_umap[:, 1], label="MiraBest", marker=marker, s=10 * marker_size, alpha=alpha)
+# ax.scatter(mb_umap[:, 0], mb_umap[:, 1], label="MiraBest", marker=marker, s=10*marker_size, alpha=alpha)
+#
 # pl.gca().set_aspect("equal", "datalim")
 # ax.get_xaxis().set_visible(False)
 # ax.get_yaxis().set_visible(False)
