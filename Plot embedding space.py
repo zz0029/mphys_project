@@ -1,0 +1,1 @@
+print('this is a script uploaded from my laptop')

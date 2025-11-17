@@ -1,0 +1,11 @@
+# Ignore large data and temp files
+fits image/
+*.fits
+*.fz
+*.pt
+*.ckpt
+*.npy
+*.npz
+*.h5
+data/
+
