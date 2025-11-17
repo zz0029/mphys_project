@@ -3,3 +3,4 @@ def func(a, b, *args, c=1, d=6, e=2, **kwargs):
     return
 
 func(a=1,32)
+print("End of program")
