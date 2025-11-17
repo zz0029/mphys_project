@@ -1,6 +1,5 @@
-# To avoid openmp conflicts (use TBB for MacOSX / TBB or GNU for Linux)
-%env MKL_THREADING_LAYER=TBB
-
+import os
+os.environ["MKL_THREADING_LAYER"] = "TBB"
 
 import pylab as pl
 import numpy as np
