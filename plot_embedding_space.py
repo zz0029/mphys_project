@@ -176,22 +176,73 @@ mb = MBFRFull(paths["mb"],
               aug_type="torchvision"
              )
 
+# Define the hyper-parameters for dimensionality reduction:
+PCA_COMPONENTS = 200
+UMAP_N_NEIGHBOURS = 75
+UMAP_MIN_DIST = 0.01
+METRIC = "cosine"
 
-# RGZ & MB representation (Fig 3 in Inigo's paper)
-rgz_umap = reducer.transform()
-mb_umap = reducer.transform(mb)
+embedding = 'rgz_embedding_25.parquet'
+
+# Fit the dimensionality reduction and transform the data through it (takes about 20 mins on CPU):
+reducer = Reducer(encoder, PCA_COMPONENTS, UMAP_N_NEIGHBOURS, UMAP_MIN_DIST, METRIC, embedding='rgz_embedding_25.parquet')
+reducer.fit()
+
+X_umap = reducer.transform()
+
+#reducer.write_file("rgz_embedding_25.parquet")
+
+alpha = 0.6
+marker_size = 0.1
+fig_size = (10 / 3, 3)
+fontsize = 9
+marker = "o"
+
+# Get the label info for all the embedded data samples:
+data_loader = DataLoader(rgz, batch_size=len(rgz), shuffle=False)
+_, y = next(iter(data_loader))
 
 fig, ax = pl.subplots()
 #fig.set_size_inches(fig_size)
 
-ax.scatter(rgz_umap[:, 0], rgz_umap[:, 1], label="RGZ DR1", marker=marker, s=marker_size, alpha=alpha)
-ax.scatter(mb_umap[:, 0], mb_umap[:, 1], label="MiraBest", marker=marker, s=10*marker_size, alpha=alpha)
-
+scatter = ax.scatter(
+    X_umap[:, 0],
+    X_umap[:, 1],
+#    c=reducer.targets,
+    c=y["size"].numpy(),
+    cmap="Spectral",
+    s=marker_size,
+    marker=marker,
+    vmin=25,
+    vmax=100,
+    alpha=alpha,
+)
 pl.gca().set_aspect("equal", "datalim")
-ax.get_xaxis().set_visible(False)
-ax.get_yaxis().set_visible(False)
+cbar = fig.colorbar(scatter)
+cbar.ax.tick_params(labelsize=fontsize)
 ax.set_xlabel("umap x", fontsize=fontsize)
 ax.set_ylabel("umap y", fontsize=fontsize)
-ax.legend(fontsize=fontsize, markerscale=10)
-fig.tight_layout()
-fig.savefig("byol_umap_mbrgz.png", bbox_inches="tight", pad_inches=0.05, dpi=600)
+ax.get_xaxis().set_visible(False)
+ax.get_yaxis().set_visible(False)
+fig.savefig("byol_umap_rgz.png", bbox_inches="tight", pad_inches=0.05, dpi=600)
+
+
+
+# RGZ & MB representation (Fig 3 in Inigo's paper)
+# rgz_umap = reducer.transform()
+# mb_umap = reducer.transform(mb)
+#
+# fig, ax = pl.subplots()
+# #fig.set_size_inches(fig_size)
+#
+# ax.scatter(rgz_umap[:, 0], rgz_umap[:, 1], label="RGZ DR1", marker=marker, s=marker_size, alpha=alpha)
+# ax.scatter(mb_umap[:, 0], mb_umap[:, 1], label="MiraBest", marker=marker, s=10*marker_size, alpha=alpha)
+#
+# pl.gca().set_aspect("equal", "datalim")
+# ax.get_xaxis().set_visible(False)
+# ax.get_yaxis().set_visible(False)
+# ax.set_xlabel("umap x", fontsize=fontsize)
+# ax.set_ylabel("umap y", fontsize=fontsize)
+# ax.legend(fontsize=fontsize, markerscale=10)
+# fig.tight_layout()
+# fig.savefig("byol_umap_mbrgz.png", bbox_inches="tight", pad_inches=0.05, dpi=600)
