@@ -9,7 +9,7 @@
 #SBATCH --exclude=compute-0-7
 
 # ======== Path Config ========
-JOB=/share/nas2_3/yhuang/myrepo/mphys_project/Plot\ embedding\ space.py
+JOB=/share/nas2_3/yhuang/myrepo/mphys_project/plot_embedding_space.py
 
 echo ">>> Job started at $(date)"
 
