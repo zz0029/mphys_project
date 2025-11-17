@@ -175,3 +175,23 @@ mb = MBFRFull(paths["mb"],
               download=False,
               aug_type="torchvision"
              )
+
+
+# RGZ & MB representation (Fig 3 in Inigo's paper)
+rgz_umap = reducer.transform()
+mb_umap = reducer.transform(mb)
+
+fig, ax = pl.subplots()
+#fig.set_size_inches(fig_size)
+
+ax.scatter(rgz_umap[:, 0], rgz_umap[:, 1], label="RGZ DR1", marker=marker, s=marker_size, alpha=alpha)
+ax.scatter(mb_umap[:, 0], mb_umap[:, 1], label="MiraBest", marker=marker, s=10*marker_size, alpha=alpha)
+
+pl.gca().set_aspect("equal", "datalim")
+ax.get_xaxis().set_visible(False)
+ax.get_yaxis().set_visible(False)
+ax.set_xlabel("umap x", fontsize=fontsize)
+ax.set_ylabel("umap y", fontsize=fontsize)
+ax.legend(fontsize=fontsize, markerscale=10)
+fig.tight_layout()
+fig.savefig("byol_umap_mbrgz.png", bbox_inches="tight", pad_inches=0.05, dpi=600)
