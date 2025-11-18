@@ -27,6 +27,8 @@ encoder = byol.encoder
 encoder.eval()
 config = byol.config
 mu, sig = config["data"]["mu"], config["data"]["sig"]
+print('mu,sig =')
+print(mu, sig)
 
 
 # ================== Reducer class ==================
