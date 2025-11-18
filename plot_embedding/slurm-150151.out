@@ -1,0 +1,28 @@
+>>> Job started at Tue Nov 18 14:00:52 GMT 2025
+>>> Running /share/nas2_3/yhuang/myrepo/mphys_project/plot_embedding/plot_embedding_space.py
+/share/nas2_3/yhuang/byol/runscripts/venv/lib/python3.9/site-packages/umap/distances.py:1063: NumbaDeprecationWarning: The 'nopython' keyword argument was not supplied to the 'numba.jit' decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.
+  @numba.jit()
+/share/nas2_3/yhuang/byol/runscripts/venv/lib/python3.9/site-packages/umap/distances.py:1071: NumbaDeprecationWarning: The 'nopython' keyword argument was not supplied to the 'numba.jit' decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.
+  @numba.jit()
+/share/nas2_3/yhuang/byol/runscripts/venv/lib/python3.9/site-packages/umap/distances.py:1086: NumbaDeprecationWarning: The 'nopython' keyword argument was not supplied to the 'numba.jit' decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.
+  @numba.jit()
+/share/nas2_3/yhuang/byol/runscripts/venv/lib/python3.9/site-packages/umap/umap_.py:660: NumbaDeprecationWarning: The 'nopython' keyword argument was not supplied to the 'numba.jit' decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.
+  @numba.jit()
+/share/nas2_3/yhuang/byol/runscripts/venv/lib/python3.9/site-packages/umap/__init__.py:36: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+Lightning automatically upgraded your loaded checkpoint from v1.5.6 to v2.0.2. To apply the upgrade to your files permanently, run `python -m pytorch_lightning.utilities.upgrade_checkpoint --file ../../../byol/runscripts/byol.ckpt`
+mu,sig = 
+(0.008008896,) (0.05303395,)
+Removing 49722 samples below angular size threshold.
+Removed 1420 MiraBest samples from RGZ
+(54858, 150, 150, 1)
+Embedding file found. Loading features from disk.
+Fitting reducer
+Reading embedding from file: /share/nas2_3/yhuang/_data/rgz/rgz_embedding_25.parquet
+Performing transformation
+Performing transformation
+Performing transformation
+  0%|          | 0/3 [00:00<?, ?it/s] 33%|███▎      | 1/3 [00:14<00:29, 14.93s/it] 67%|██████▋   | 2/3 [00:15<00:06,  6.27s/it]100%|██████████| 3/3 [00:15<00:00,  3.47s/it]100%|██████████| 3/3 [00:15<00:00,  5.09s/it]
+Performing transformation
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:00<00:00, 21.21it/s]
+>>> Job finished at Tue Nov 18 14:08:19 GMT 2025
