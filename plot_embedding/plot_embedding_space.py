@@ -263,15 +263,8 @@ fig, ax = pl.subplots()
 
 ax.scatter(rgz_umap[:, 0], rgz_umap[:, 1], label="RGZ DR1", marker=marker, s=marker_size, alpha=alpha)
 ax.scatter(mb_umap[:, 0], mb_umap[:, 1], label="MiraBest", marker=marker, s=10 * marker_size, alpha=alpha)
-ax.scatter(
-    orc_umap[:, 0],
-    orc_umap[:, 1],
-    label="ORC",
-    marker="x",  # 或者 "s", "D" 随便选一个和前两类区分开
-    s=40,  # 稍微大一点，容易看见
-    alpha=1.0,
-    c="red",  # 固定红色
-)
+ax.scatter(orc_umap[:, 0], orc_umap[:, 1], label="ORC", marker=marker, s=50 * marker_size, alpha=alpha)
+
 
 pl.gca().set_aspect("equal", "datalim")
 ax.get_xaxis().set_visible(False)
