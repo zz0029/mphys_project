@@ -1,0 +1,7 @@
+>>> Job started at Mon Nov 17 15:08:33 GMT 2025
+>>> Running /share/nas2_3/yhuang/myrepo/mphys_project/plot_embedding_space.py
+  File "/share/nas2_3/yhuang/myrepo/mphys_project/plot_embedding_space.py", line 2
+    %env MKL_THREADING_LAYER=TBB
+    ^
+SyntaxError: invalid syntax
+>>> Job finished at Mon Nov 17 15:08:34 GMT 2025

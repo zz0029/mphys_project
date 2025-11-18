@@ -1,0 +1,45 @@
+>>> Job started at Tue Nov 18 13:11:45 GMT 2025
+>>> Running /share/nas2_3/yhuang/myrepo/mphys_project/plot_embedding/plot_embedding_space.py
+/share/nas2_3/yhuang/byol/runscripts/venv/lib/python3.9/site-packages/umap/distances.py:1063: NumbaDeprecationWarning: The 'nopython' keyword argument was not supplied to the 'numba.jit' decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.
+  @numba.jit()
+/share/nas2_3/yhuang/byol/runscripts/venv/lib/python3.9/site-packages/umap/distances.py:1071: NumbaDeprecationWarning: The 'nopython' keyword argument was not supplied to the 'numba.jit' decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.
+  @numba.jit()
+/share/nas2_3/yhuang/byol/runscripts/venv/lib/python3.9/site-packages/umap/distances.py:1086: NumbaDeprecationWarning: The 'nopython' keyword argument was not supplied to the 'numba.jit' decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.
+  @numba.jit()
+/share/nas2_3/yhuang/byol/runscripts/venv/lib/python3.9/site-packages/umap/umap_.py:660: NumbaDeprecationWarning: The 'nopython' keyword argument was not supplied to the 'numba.jit' decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.
+  @numba.jit()
+/share/nas2_3/yhuang/byol/runscripts/venv/lib/python3.9/site-packages/umap/__init__.py:36: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+Lightning automatically upgraded your loaded checkpoint from v1.5.6 to v2.0.2. To apply the upgrade to your files permanently, run `python -m pytorch_lightning.utilities.upgrade_checkpoint --file ../../../byol/runscripts/byol.ckpt`
+mu,sig = 
+(0.008008896,) (0.05303395,)
+Removing 49722 samples below angular size threshold.
+Removed 1420 MiraBest samples from RGZ
+(54858, 150, 150, 1)
+Embedding file found. Loading features from disk.
+Fitting reducer
+Reading embedding from file: /share/nas2_3/yhuang/_data/rgz/rgz_embedding_25.parquet
+Performing transformation
+Performing transformation
+Performing transformation
+  0%|          | 0/3 [00:00<?, ?it/s] 33%|███▎      | 1/3 [00:10<00:21, 10.90s/it] 67%|██████▋   | 2/3 [00:11<00:04,  4.59s/it]100%|██████████| 3/3 [00:11<00:00,  2.55s/it]100%|██████████| 3/3 [00:11<00:00,  3.74s/it]
+Performing transformation
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:00<00:00, 29.68it/s]
+Traceback (most recent call last):
+  File "/share/nas2_3/yhuang/myrepo/mphys_project/plot_embedding/plot_embedding_space.py", line 259, in <module>
+    orc_umap = reducer.transform(orc_dataset)  # 新增：对 ORC 做 transform
+  File "/share/nas2_3/yhuang/myrepo/mphys_project/plot_embedding/plot_embedding_space.py", line 137, in transform
+    x = self.pca.transform(x)
+  File "/share/nas2_3/yhuang/byol/runscripts/venv/lib/python3.9/site-packages/sklearn/utils/_set_output.py", line 140, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+  File "/share/nas2_3/yhuang/byol/runscripts/venv/lib/python3.9/site-packages/sklearn/decomposition/_base.py", line 120, in transform
+    X = self._validate_data(X, dtype=[np.float64, np.float32], reset=False)
+  File "/share/nas2_3/yhuang/byol/runscripts/venv/lib/python3.9/site-packages/sklearn/base.py", line 565, in _validate_data
+    X = check_array(X, input_name="X", **check_params)
+  File "/share/nas2_3/yhuang/byol/runscripts/venv/lib/python3.9/site-packages/sklearn/utils/validation.py", line 921, in check_array
+    _assert_all_finite(
+  File "/share/nas2_3/yhuang/byol/runscripts/venv/lib/python3.9/site-packages/sklearn/utils/validation.py", line 161, in _assert_all_finite
+    raise ValueError(msg_err)
+ValueError: Input X contains NaN.
+PCA does not accept missing values encoded as NaN natively. For supervised learning, you might want to consider sklearn.ensemble.HistGradientBoostingClassifier and Regressor which accept missing values encoded as NaNs natively. Alternatively, it is possible to preprocess the data, for instance by using an imputer transformer in a pipeline or drop samples with missing values. See https://scikit-learn.org/stable/modules/impute.html You can find a list of all estimators that handle NaN values at the following page: https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values
+>>> Job finished at Tue Nov 18 13:17:20 GMT 2025
