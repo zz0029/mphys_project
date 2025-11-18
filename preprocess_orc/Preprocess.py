@@ -5,7 +5,7 @@ import torchvision.transforms as T
 
 # ========= 这里填写你的 9 个 fits 文件路径 =========
 fits_paths = [
-    "../orc_fits/image.i.EMU_2034-60.SB72006.cont.taylor.0.restored.conv.fits",
+    # "../orc_fits/image.i.EMU_2034-60.SB72006.cont.taylor.0.restored.conv.fits",
     "../orc_fits/image.i.EMU_2042-55.SB72149.cont.taylor.0.restored.conv.fits",
     "../orc_fits/image.i.EMU_0205-55.SB46946.cont.taylor.0.restored.conv.fits",
     "../orc_fits/image.i.EMU_0354-55.SB59481.cont.taylor.0.restored.conv.fits",
@@ -18,7 +18,7 @@ fits_paths = [
 
 # ========= 对应 9 个 ORC 的坐标文件（每个文件 1 行）=========
 catalogue_paths = [
-    "../orc_cata/ORC coordinates in 72006.txt",
+    # "../orc_cata/ORC coordinates in 72006.txt",
     "../orc_cata/ORC coordinates in 72149.txt",
     "../orc_cata/ORC coordinates in 46946.txt",
     "../orc_cata/ORC coordinates in 59481.txt",
