@@ -1,5 +1,5 @@
 # Ignore large data and temp files
-fits image/
+ORC FITS image/
 *.fits
 *.fz
 *.pt
@@ -9,3 +9,5 @@ fits image/
 *.h5
 data/
 
+orc catalogue/
+*.txt
