@@ -269,15 +269,16 @@ for i, (x, y) in enumerate(orc_umap):
 ax.scatter(rgz_umap[:, 0], rgz_umap[:, 1], label="RGZ DR1", marker=marker, s=marker_size, alpha=alpha)
 ax.scatter(mb_umap[:, 0], mb_umap[:, 1], label="MiraBest", marker=marker, s=10 * marker_size, alpha=alpha)
 # ax.scatter(orc_umap[:, 0], orc_umap[:, 1], label="ORC", marker="x", s=50 * marker_size, alpha=alpha, c= "red")
+size = 10 * marker_size
 for i, (x, y) in enumerate(orc_umap):
+    size += 10 * marker_size
     ax.scatter(
         x, y,
-        s=200,
+        s=size,
         marker="X",
         color=f"C{i%10}",
         label=f"ORC {i}",
-        edgecolors="black",
-        linewidths=1.0
+        alpha=0.3
     )
 
 ax.legend()
