@@ -1,4 +1,5 @@
 import os
+
 os.environ["MKL_THREADING_LAYER"] = "TBB"
 
 import pylab as pl
@@ -34,14 +35,14 @@ print(mu, sig)
 # ================== Reducer class ==================
 class Reducer:
     def __init__(
-        self,
-        encoder,
-        PCA_COMPONENTS,
-        UMAP_N_NEIGHBOURS,
-        UMAP_MIN_DIST,
-        METRIC,
-        embedding=None,
-        seed=42,
+            self,
+            encoder,
+            PCA_COMPONENTS,
+            UMAP_N_NEIGHBOURS,
+            UMAP_MIN_DIST,
+            METRIC,
+            embedding=None,
+            seed=42,
     ):
         self.encoder = encoder
         self.pca = PCA(n_components=PCA_COMPONENTS, random_state=seed)
@@ -174,6 +175,20 @@ mb = MBFRFull(
     aug_type="torchvision",
 )
 
+# ================== ORC cutouts dataset ==================
+from torch.utils.data import TensorDataset
+
+orc_pt_path = "/share/nas2_3/yhuang/myrepo/mphys_project/preprocess_orc/orc_cutouts.pt"
+orc_data = torch.load(orc_pt_path)
+
+# 这就是你预处理保存的 [N, 1, 70, 70]，已经做过 Normalize 了
+orc_images = orc_data["images"].float()  # shape: (N, 1, 70, 70)
+orc_labels = orc_data["labels"]  # 暂时用不上，只是保留
+
+# 做一个简单的 Dataset，让 Reducer.embed_dataset 可以用同样的接口读取
+dummy_targets = torch.zeros(len(orc_images))  # 占位 label
+orc_dataset = TensorDataset(orc_images, dummy_targets)
+
 # ================== Dimensionality reduction hyperparameters ==================
 PCA_COMPONENTS = 200
 UMAP_N_NEIGHBOURS = 75
@@ -241,13 +256,22 @@ fig.savefig("byol_umap_rgz.png", bbox_inches="tight", pad_inches=0.05, dpi=600)
 # ===== RGZ + MB 的图你以后再打开 =====
 rgz_umap = reducer.transform()
 mb_umap = reducer.transform(mb)
-
+orc_umap = reducer.transform(orc_dataset)  # 新增：对 ORC 做 transform
 
 fig, ax = pl.subplots()
-#fig.set_size_inches(fig_size)
+# fig.set_size_inches(fig_size)
 
 ax.scatter(rgz_umap[:, 0], rgz_umap[:, 1], label="RGZ DR1", marker=marker, s=marker_size, alpha=alpha)
-ax.scatter(mb_umap[:, 0], mb_umap[:, 1], label="MiraBest", marker=marker, s=10*marker_size, alpha=alpha)
+ax.scatter(mb_umap[:, 0], mb_umap[:, 1], label="MiraBest", marker=marker, s=10 * marker_size, alpha=alpha)
+ax.scatter(
+    orc_umap[:, 0],
+    orc_umap[:, 1],
+    label="ORC",
+    marker="x",  # 或者 "s", "D" 随便选一个和前两类区分开
+    s=40,  # 稍微大一点，容易看见
+    alpha=1.0,
+    c="red",  # 固定红色
+)
 
 pl.gca().set_aspect("equal", "datalim")
 ax.get_xaxis().set_visible(False)
@@ -256,4 +280,4 @@ ax.set_xlabel("umap x", fontsize=fontsize)
 ax.set_ylabel("umap y", fontsize=fontsize)
 ax.legend(fontsize=fontsize, markerscale=10)
 fig.tight_layout()
-fig.savefig("byol_umap_mbrgz.png", bbox_inches="tight", pad_inches=0.05, dpi=600)
+fig.savefig("byol_umap_mbrgz_orc.png", bbox_inches="tight", pad_inches=0.05, dpi=600)
