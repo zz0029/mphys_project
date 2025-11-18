@@ -1,13 +1,6 @@
 # Ignore large data and temp files
 ORC FITS image/
 *.fits
-*.fz
-*.pt
-*.ckpt
-*.npy
-*.npz
-*.h5
-data/
 
 orc catalogue/
 *.txt
