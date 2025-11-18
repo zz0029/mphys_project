@@ -263,7 +263,9 @@ fig, ax = pl.subplots()
 
 ax.scatter(rgz_umap[:, 0], rgz_umap[:, 1], label="RGZ DR1", marker=marker, s=marker_size, alpha=alpha)
 ax.scatter(mb_umap[:, 0], mb_umap[:, 1], label="MiraBest", marker=marker, s=10 * marker_size, alpha=alpha)
-ax.scatter(orc_umap[:, 0], orc_umap[:, 1], label="ORC", marker=marker, s=50 * marker_size, alpha=alpha)
+ax.scatter(orc_umap[:, 0], orc_umap[:, 1], label="ORC", marker="x", s=50 * marker_size, alpha=alpha, c= "red")
+ax.legend()
+ax.set_xlabel("umap x", fontsize=fontsize)
 
 
 pl.gca().set_aspect("equal", "datalim")
