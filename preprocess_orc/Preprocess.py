@@ -5,29 +5,29 @@ import torchvision.transforms as T
 
 # ========= 这里填写你的 9 个 fits 文件路径 =========
 fits_paths = [
-    "orc fits file/image.i.EMU_2034-60.SB72006.cont.taylor.0.restored.conv.fits",
-    "orc fits file/image.i.EMU_2042-55.SB72149.cont.taylor.0.restored.conv.fits",
-    "orc fits file/image.i.EMU_0205-55.SB46946.cont.taylor.0.restored.conv.fits",
-    "orc fits file/image.i.EMU_0354-55.SB59481.cont.taylor.0.restored.conv.fits",
-    "orc fits file/image.i.EMU_0448-60.SB50230.cont.taylor.0.restored.conv.fits",
-    "orc fits file/image.i.EMU_1315-46.SB51948.cont.taylor.0.restored.conv.fits",
-    "orc fits file/image.i.EMU_2236-69.SB53566.cont.taylor.0.restored.conv.fits",
-    "orc fits file/image.i.EMU_0857-04A.SB71464.cont.taylor.0.restored.conv.fits",
-    "orc fits file/image.i.EMU_2238-51.SB59862.cont.taylor.0.restored.conv.fits"
+    "orc_fits/image.i.EMU_2034-60.SB72006.cont.taylor.0.restored.conv.fits",
+    "orc_fits/image.i.EMU_2042-55.SB72149.cont.taylor.0.restored.conv.fits",
+    "orc_fits/image.i.EMU_0205-55.SB46946.cont.taylor.0.restored.conv.fits",
+    "orc_fits/image.i.EMU_0354-55.SB59481.cont.taylor.0.restored.conv.fits",
+    "orc_fits/image.i.EMU_0448-60.SB50230.cont.taylor.0.restored.conv.fits",
+    "orc_fits/image.i.EMU_1315-46.SB51948.cont.taylor.0.restored.conv.fits",
+    "orc_fits/image.i.EMU_2236-69.SB53566.cont.taylor.0.restored.conv.fits",
+    "orc_fits/image.i.EMU_0857-04A.SB71464.cont.taylor.0.restored.conv.fits",
+    "orc_fits/image.i.EMU_2238-51.SB59862.cont.taylor.0.restored.conv.fits"
     # ... 一共 9 个
 ]
 
 # ========= 对应 9 个 ORC 的坐标文件（每个文件 1 行）=========
 catalogue_paths = [
-    "orc catalogue/ORC coordinates in 72006.txt",
-    "orc catalogue/ORC coordinates in 72149.txt",
-    "orc catalogue/ORC coordinates in 46946.txt",
-    "orc catalogue/ORC coordinates in 59481.txt",
-    "orc catalogue/ORC coordinates in 50230.txt",
-    "orc catalogue/ORC coordinates in 51948.txt",
-    "orc catalogue/ORC coordinates in 53566.txt",
-    "orc catalogue/ORC coordinates in 71464.txt",
-    "orc catalogue/ORC coordinates in 59862.txt",
+    "orc_cata/ORC coordinates in 72006.txt",
+    "orc_cata/ORC coordinates in 72149.txt",
+    "orc_cata/ORC coordinates in 46946.txt",
+    "orc_cata/ORC coordinates in 59481.txt",
+    "orc_cata/ORC coordinates in 50230.txt",
+    "orc_cata/ORC coordinates in 51948.txt",
+    "orc_cata/ORC coordinates in 53566.txt",
+    "orc_cata/ORC coordinates in 71464.txt",
+    "orc_cata/ORC coordinates in 59862.txt",
     # ... 一共 9 个
 ]
 
