@@ -35,7 +35,12 @@ assert len(fits_paths) == len(catalogue_paths), "fits 数量和坐标文件数�
 mu, sig = 0.008008896, 0.05303395    # 来自 byol.config["data"]["mu"], ["data"]["sig"]
 
 # 注意：Normalize 只对 tensor 起作用，形状需为 [C,H,W]
-normalize = T.Normalize((mu,), (sig,))
+transform = T.Compose(
+    [
+        T.ToTensor(),
+        T.Normalize((mu,), (sig,)),
+    ]
+)
 
 all_images = []
 all_labels = []
@@ -48,26 +53,14 @@ for fits_file, cat_file in zip(fits_paths, catalogue_paths):
         catalogue_paths=[cat_file],
         image_paths=[fits_file],
         field_names=["ORCfield"],
-        cutout_shape=70,   # 已经裁成 70x70 了
+        cutout_shape=70,   # centre-crop 70x70
+        transform=transform,
         targets=["ORC"],
     )
 
     # 每个文件只有 1 个 ORC
     img, label = ds[0]    # img shape: (1,70,70) 或 (70,70)
-
-    # 如果是 numpy，就转成 tensor
-    if isinstance(img, np.ndarray):
-        img = torch.from_numpy(img).float()
-
-    # 确保形状为 (1,70,70)： [C,H,W]
-    if img.ndim == 2:          # (70,70)
-        img = img.unsqueeze(0) # -> (1,70,70)
-    elif img.ndim == 3 and img.shape[0] != 1:
-        # 以防万一，如果第一维不是通道，就再处理一下
-        img = img.unsqueeze(0)
-
-    # 只做 Normalize
-    img = normalize(img)
+    print(img.shape)
 
     all_images.append(img)
     all_labels.append(label)
@@ -75,7 +68,7 @@ for fits_file, cat_file in zip(fits_paths, catalogue_paths):
 # ========= 合并成一个 tensor =========
 images_tensor = torch.stack(all_images)   # shape = (9,1,70,70)
 
-# ========= 保存到 pt 文件 =========
+# # ========= 保存到 pt 文件 =========
 save_dict = {
     "images": images_tensor,
     "labels": all_labels,
