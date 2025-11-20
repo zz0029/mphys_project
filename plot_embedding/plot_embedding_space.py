@@ -206,6 +206,16 @@ reducer = Reducer(
     embedding=embedding_file,
 )
 
+# ======= 自动判断：第一次运行 or 之后重复运行 =======
+if os.path.exists(embedding_file):
+    print("Embedding file found. Loading features from disk.")
+    reducer.fit()  # 使用 parquet 中的特征
+else:
+    print("Embedding file NOT found. Computing features from RGZ (this may take a while).")
+    reducer.fit(data=rgz)
+    reducer.write_file(embedding_file)
+
+
 X_umap = reducer.transform()
 
 # ================== Plot (Figure 2 style) ==================
