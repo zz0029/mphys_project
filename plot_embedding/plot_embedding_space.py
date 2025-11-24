@@ -77,45 +77,12 @@ class Reducer:
             targets = np.ones(features.shape[0])
         return features, targets
 
-    # def write_file(self, filename):
-    #     cols = [f"feat_{i}" for i in range(512)]
-    #     print(self.features.shape, self.targets.shape)
-    #     df = pd.DataFrame(data=self.features, columns=cols)
-    #     df.to_parquet(filename)
-    #     return
-
-    def write_file(self, filename, dataset=None):
-        """
-        dataset: RGZ108k dataset, so we can extract metadata like ra/dec/size/rgz_name
-        """
-        # ==== DEBUG: print metadata keys once ====
-        if dataset is not None:
-            meta_sample = dataset[0][1]
-            print("META KEYS:", meta_sample.keys())
-            exit()
-        # =========================================
+    def write_file(self, filename):
         cols = [f"feat_{i}" for i in range(512)]
-        df = pd.DataFrame(self.features.numpy(), columns=cols)
-
-        if dataset is not None:
-            # extract metadata from RGZ dataset
-            all_meta = []
-            for i in range(len(dataset)):
-                meta = dataset[i][1]  # second element of each sample is metadata y
-                all_meta.append({
-                    "rgz_name": meta["rgz_name"],
-                    "ra": float(meta["ra"]),
-                    "dec": float(meta["dec"]),
-                    "size": float(meta["size"]),
-                })
-
-            meta_df = pd.DataFrame(all_meta)
-
-            # merge with features
-            df = pd.concat([df, meta_df], axis=1)
-
+        print(self.features.shape, self.targets.shape)
+        df = pd.DataFrame(data=self.features, columns=cols)
         df.to_parquet(filename)
-        print(f"Saved embedding with metadata to {filename}")
+        return
 
     def embed_dataset(self, data, batch_size=400):
         train_loader = DataLoader(data, batch_size, shuffle=False)
@@ -246,7 +213,7 @@ if os.path.exists(embedding_file):
 else:
     print("Embedding file NOT found. Computing features from RGZ (this may take a while).")
     reducer.fit(data=rgz)
-    reducer.write_file(embedding_file, dataset=rgz)
+    reducer.write_file(embedding_file)
 
 
 X_umap = reducer.transform()
