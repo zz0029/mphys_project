@@ -88,6 +88,12 @@ class Reducer:
         """
         dataset: RGZ108k dataset, so we can extract metadata like ra/dec/size/rgz_name
         """
+        # ==== DEBUG: print metadata keys once ====
+        if dataset is not None:
+            meta_sample = dataset[0][1]
+            print("META KEYS:", meta_sample.keys())
+            exit()
+        # =========================================
         cols = [f"feat_{i}" for i in range(512)]
         df = pd.DataFrame(self.features.numpy(), columns=cols)
 
