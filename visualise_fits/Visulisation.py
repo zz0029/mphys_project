@@ -8,9 +8,9 @@ import astropy.units as u
 import matplotlib.pyplot as plt
 
 # Input parameters
-IMG_PATH = "../ORC FITS image/image.i.EMU_2034-60.SB72006.cont.taylor.0.restored.conv.fits"
-ORC_RA_DEG  = 315.74292
-ORC_DEC_DEG = -62.00444
+IMG_PATH = "../orc_fits/image.i.EMU_0857-04A.SB71464.cont.taylor.0.restored.conv.fits"
+ORC_RA_DEG  = 132.3645
+ORC_DEC_DEG = -4.956
 
 # Read the ORC FITS image and get HDUList
 hdul = fits.open(IMG_PATH)
@@ -36,7 +36,7 @@ print(c.ra.deg, c.dec.deg)
 # Image Normalisation
 mean, med, std = sigma_clipped_stats(hdu_data, sigma=3.0)
 norm = ImageNormalize(hdu_data,
-                      interval=PercentileInterval(99.5),   # 丢掉极端0.5%
+                      interval=PercentileInterval(99.99),   # remain 0.5%
                       stretch=AsinhStretch())
 #Plot image
 fig, ax = plt.subplots(subplot_kw=dict(projection=wcs))
