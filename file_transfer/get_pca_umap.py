@@ -25,14 +25,17 @@ joblib.dump(pca, "pca.joblib")
 print("Saved pca.joblib")
 
 # 保存 200维特征到 pca.parquet
-pca_df = pd.DataFrame({
-    f"pca_{i}": pca_feats[:, i] for i in range(200)
-})
+pca_cols = [f"pca_{i}" for i in range(200)]
+pca_df = pd.DataFrame(pca_feats, columns=pca_cols)
 
-# 把必要信息加进去（RA/Dec/name）
-for col in ["ra", "dec", "rgz_name"]:
+# 把必要信息加进去（顺序与原始 pca.parquet 一致：pca_*，rgz_name，size，ra，dec）
+for col in ["rgz_name", "size", "ra", "dec"]:
     if col in df.columns:
-        pca_df[col] = df[col]
+        pca_df[col] = df[col].values
+
+# 明确列顺序
+ordered_pca_cols = pca_cols + [c for c in ["rgz_name", "size", "ra", "dec"] if c in pca_df.columns]
+pca_df = pca_df[ordered_pca_cols]
 
 pca_df.to_parquet("pca.parquet")
 print("Saved pca.parquet")
@@ -51,10 +54,24 @@ umap_model = UMAP(
 
 umap_xy = umap_model.fit_transform(pca_feats)
 
-# 保存为 umap.parquet
-umap_df = pd.DataFrame({
-    "umap_x": umap_xy[:, 0],
-    "umap_y": umap_xy[:, 1]
-})
+# 保存为 umap.parquet：列顺序与原始 umap.parquet 一致：rgz_name, umap_x, umap_y, ra, dec, size
+data = {}
+
+# 先加元数据
+for col in ["rgz_name"]:
+    if col in df.columns:
+        data[col] = df[col].values
+
+# 再加 UMAP 坐标
+data["umap_x"] = umap_xy[:, 0]
+data["umap_y"] = umap_xy[:, 1]
+
+# 最后加位置信息和 size（如果存在）
+for col in ["ra", "dec", "size"]:
+    if col in df.columns:
+        data[col] = df[col].values
+
+umap_df = pd.DataFrame(data)
+
 umap_df.to_parquet("umap.parquet")
 print("Saved umap.parquet")
