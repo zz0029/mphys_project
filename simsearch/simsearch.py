@@ -315,15 +315,40 @@ for orc_idx, (dists, idxs) in enumerate(zip(distances, indices)):
         # 从 Dataset 里取图像
         img, meta = rgz[rgz_idx]  # img: Tensor [1, H, W]
 
-        # 转成一个可以显示的版本：按每张图单独做 [0,1] 拉伸
+        # === DEBUG: print raw tensor + meta ===
+        print("\nDEBUG: RAW RGZ IMAGE TENSOR")
+        print("rgz_idx =", rgz_idx)
+        print("shape =", img.shape)
+        print("min   =", img.min().item())
+        print("max   =", img.max().item())
+        print("mean  =", img.mean().item())
+        print("std   =", img.std().item())
+
+        # 打印整张 image（注意会很长）
+        print("full image tensor:")
+        print(img)  # img 形状是 [1, H, W]
+        # 或者只打掉 channel 这一维：
+        # print(img[0])
+
+        # 打印 meta 信息
+        print("META for this RGZ sample:")
+        print(meta)  # meta 是 RGZ108k 返回的字典
+
+        # 如果你想更详细一点，可以这样展开：
+        for k, v in meta.items():
+            print(f"  {k}: shape={v.shape}, dtype={v.dtype}, values={v}")
+
+        print("============== END DEBUG ==============\n")
+
+        # 可视化用的 tensor
         img_vis = img.clone()
 
         # 去掉 batch 之类的影响，这里 img 本身就是 [1, H, W]
-        min_val = img_vis.min()
-        max_val = img_vis.max()
-
-        # 避免除零
-        img_vis = (img_vis - min_val) / (max_val - min_val + 1e-8)
+        # min_val = img_vis.min()
+        # max_val = img_vis.max()
+        #
+        # # 避免除零
+        # img_vis = (img_vis - min_val) / (max_val - min_val + 1e-8)
 
         save_path = os.path.join(
             out_dir,
