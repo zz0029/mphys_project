@@ -264,6 +264,27 @@ print("ORC UMAP positions:")
 for i, (x, y) in enumerate(orc_umap):
     print(i, x, y)
 
+# Plotting
+fig, ax = pl.subplots()
+ax.scatter(rgz_umap[:, 0], rgz_umap[:, 1], label="RGZ DR1", marker=marker, s=marker_size, alpha=alpha)
+ax.scatter(mb_umap[:, 0], mb_umap[:, 1], label="MiraBest", marker=marker, s=10 * marker_size, alpha=alpha)
+ax.scatter(orc_umap[:, 0], orc_umap[:, 1], label="ORC", marker="x", s=100 * marker_size, alpha=alpha, c= "red")
+
+
+
+# Labels on graph
+ax.legend()
+ax.set_xlabel("umap x", fontsize=fontsize)
+pl.gca().set_aspect("equal", "datalim")
+ax.get_xaxis().set_visible(False)
+ax.get_yaxis().set_visible(False)
+ax.set_xlabel("umap x", fontsize=fontsize)
+ax.set_ylabel("umap y", fontsize=fontsize)
+ax.legend(fontsize=fontsize, markerscale=10)
+fig.tight_layout()
+fig.savefig("byol_umap_mbrgz_orc.png", bbox_inches="tight", pad_inches=0.05, dpi=600)
+
+
 # ==============================Similarity Search==========
 from sklearn.neighbors import NearestNeighbors
 import os
@@ -292,12 +313,17 @@ for orc_idx, (dists, idxs) in enumerate(zip(distances, indices)):
               f"dist={dist:.4f}")
 
         # 从 Dataset 里取图像
-        img, meta = rgz[rgz_idx]   # img: Tensor [1, H, W]
+        img, meta = rgz[rgz_idx]  # img: Tensor [1, H, W]
 
-        # 反标准化到可视化范围（mu, sig 来自前面 config）
-        # img_vis 形状保持 [1, H, W]
-        img_vis = img.clone() * sig[0] + mu[0]
-        img_vis = torch.clamp(img_vis, min=0.0)  # 简单截断
+        # 转成一个可以显示的版本：按每张图单独做 [0,1] 拉伸
+        img_vis = img.clone()
+
+        # 去掉 batch 之类的影响，这里 img 本身就是 [1, H, W]
+        min_val = img_vis.min()
+        max_val = img_vis.max()
+
+        # 避免除零
+        img_vis = (img_vis - min_val) / (max_val - min_val + 1e-8)
 
         save_path = os.path.join(
             out_dir,
