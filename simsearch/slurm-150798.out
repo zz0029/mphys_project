@@ -1,0 +1,92 @@
+>>> Job started at Wed Nov 26 16:12:23 GMT 2025
+>>> Running /share/nas2_3/yhuang/myrepo/mphys_project/simsearch/simsearch.py
+/share/nas2_3/yhuang/byol/runscripts/venv/lib/python3.9/site-packages/umap/distances.py:1063: NumbaDeprecationWarning: The 'nopython' keyword argument was not supplied to the 'numba.jit' decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.
+  @numba.jit()
+/share/nas2_3/yhuang/byol/runscripts/venv/lib/python3.9/site-packages/umap/distances.py:1071: NumbaDeprecationWarning: The 'nopython' keyword argument was not supplied to the 'numba.jit' decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.
+  @numba.jit()
+/share/nas2_3/yhuang/byol/runscripts/venv/lib/python3.9/site-packages/umap/distances.py:1086: NumbaDeprecationWarning: The 'nopython' keyword argument was not supplied to the 'numba.jit' decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.
+  @numba.jit()
+/share/nas2_3/yhuang/byol/runscripts/venv/lib/python3.9/site-packages/umap/umap_.py:660: NumbaDeprecationWarning: The 'nopython' keyword argument was not supplied to the 'numba.jit' decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.
+  @numba.jit()
+/share/nas2_3/yhuang/byol/runscripts/venv/lib/python3.9/site-packages/umap/__init__.py:36: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+Lightning automatically upgraded your loaded checkpoint from v1.5.6 to v2.0.2. To apply the upgrade to your files permanently, run `python -m pytorch_lightning.utilities.upgrade_checkpoint --file ../../../byol/runscripts/byol.ckpt`
+Removing 49722 samples below angular size threshold.
+Removed 1420 MiraBest samples from RGZ
+(54858, 150, 150, 1)
+Embedding file found. Loading features from disk.
+Fitting reducer
+Reading embedding from file: /share/nas2_3/yhuang/_data/rgz/rgz_embedding_25.parquet
+Performing transformation
+Performing transformation
+Performing transformation
+  0%|          | 0/3 [00:00<?, ?it/s] 33%|███▎      | 1/3 [01:11<02:22, 71.16s/it] 67%|██████▋   | 2/3 [01:25<00:37, 37.70s/it]100%|██████████| 3/3 [01:25<00:00, 20.58s/it]100%|██████████| 3/3 [01:25<00:00, 28.55s/it]
+Performing transformation
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:00<00:00, 16.79it/s]
+ORC UMAP positions:
+0 9.158009 0.024457933
+1 9.159863 0.016918693
+2 9.154278 0.018921215
+3 9.159057 0.01895199
+4 9.152699 0.009850835
+5 9.145883 0.027292334
+6 8.9702 6.8435493
+7 9.165018 0.015885822
+===== ORC 最近 RGZ 邻居（在 UMAP 2D 空间）=====
+
+ORC 0 at UMAP [9.158009   0.02445793]
+  #1: RGZ index 37396, UMAP=(9.1408, 0.0307), dist=0.0183
+  #2: RGZ index 28711, UMAP=(9.1422, 0.0342), dist=0.0185
+  #3: RGZ index 13426, UMAP=(9.1612, 0.0448), dist=0.0206
+  #4: RGZ index 28397, UMAP=(9.1382, 0.0372), dist=0.0236
+  #5: RGZ index 40761, UMAP=(9.1835, 0.0040), dist=0.0327
+
+ORC 1 at UMAP [9.159863   0.01691869]
+  #1: RGZ index 37396, UMAP=(9.1408, 0.0307), dist=0.0235
+  #2: RGZ index 28711, UMAP=(9.1422, 0.0342), dist=0.0247
+  #3: RGZ index 40761, UMAP=(9.1835, 0.0040), dist=0.0269
+  #4: RGZ index 13426, UMAP=(9.1612, 0.0448), dist=0.0279
+  #5: RGZ index 28397, UMAP=(9.1382, 0.0372), dist=0.0297
+
+ORC 2 at UMAP [9.154278   0.01892122]
+  #1: RGZ index 37396, UMAP=(9.1408, 0.0307), dist=0.0179
+  #2: RGZ index 28711, UMAP=(9.1422, 0.0342), dist=0.0194
+  #3: RGZ index 28397, UMAP=(9.1382, 0.0372), dist=0.0244
+  #4: RGZ index 13426, UMAP=(9.1612, 0.0448), dist=0.0268
+  #5: RGZ index 40761, UMAP=(9.1835, 0.0040), dist=0.0328
+
+ORC 3 at UMAP [9.159057   0.01895199]
+  #1: RGZ index 37396, UMAP=(9.1408, 0.0307), dist=0.0217
+  #2: RGZ index 28711, UMAP=(9.1422, 0.0342), dist=0.0227
+  #3: RGZ index 13426, UMAP=(9.1612, 0.0448), dist=0.0259
+  #4: RGZ index 28397, UMAP=(9.1382, 0.0372), dist=0.0277
+  #5: RGZ index 40761, UMAP=(9.1835, 0.0040), dist=0.0287
+
+ORC 4 at UMAP [9.152699   0.00985084]
+  #1: RGZ index 37396, UMAP=(9.1408, 0.0307), dist=0.0240
+  #2: RGZ index 28711, UMAP=(9.1422, 0.0342), dist=0.0265
+  #3: RGZ index 28397, UMAP=(9.1382, 0.0372), dist=0.0310
+  #4: RGZ index 40761, UMAP=(9.1835, 0.0040), dist=0.0314
+  #5: RGZ index 27690, UMAP=(9.1816, -0.0047), dist=0.0324
+
+ORC 5 at UMAP [9.145883   0.02729233]
+  #1: RGZ index 37396, UMAP=(9.1408, 0.0307), dist=0.0061
+  #2: RGZ index 28711, UMAP=(9.1422, 0.0342), dist=0.0078
+  #3: RGZ index 28397, UMAP=(9.1382, 0.0372), dist=0.0126
+  #4: RGZ index 13426, UMAP=(9.1612, 0.0448), dist=0.0233
+  #5: RGZ index 12435, UMAP=(9.1202, 0.0386), dist=0.0280
+
+ORC 6 at UMAP [8.9702    6.8435493]
+  #1: RGZ index 42904, UMAP=(8.9784, 6.8629), dist=0.0210
+  #2: RGZ index 38620, UMAP=(8.9951, 6.8638), dist=0.0321
+  #3: RGZ index 54210, UMAP=(8.9971, 6.8144), dist=0.0397
+  #4: RGZ index 25067, UMAP=(8.9977, 6.8786), dist=0.0445
+  #5: RGZ index 19039, UMAP=(9.0188, 6.8554), dist=0.0500
+
+ORC 7 at UMAP [9.165018   0.01588582]
+  #1: RGZ index 40761, UMAP=(9.1835, 0.0040), dist=0.0220
+  #2: RGZ index 27690, UMAP=(9.1816, -0.0047), dist=0.0265
+  #3: RGZ index 37396, UMAP=(9.1408, 0.0307), dist=0.0284
+  #4: RGZ index 13426, UMAP=(9.1612, 0.0448), dist=0.0291
+  #5: RGZ index 28711, UMAP=(9.1422, 0.0342), dist=0.0292
+>>> Job finished at Wed Nov 26 16:19:57 GMT 2025
