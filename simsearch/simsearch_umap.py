@@ -343,12 +343,13 @@ for orc_idx, (dists, idxs) in enumerate(zip(distances, indices)):
         # 可视化用的 tensor
         img_vis = img.clone()
 
-        # 去掉 batch 之类的影响，这里 img 本身就是 [1, H, W]
-        # min_val = img_vis.min()
-        # max_val = img_vis.max()
-        #
-        # # 避免除零
-        # img_vis = (img_vis - min_val) / (max_val - min_val + 1e-8)
+        # 反归一化：x_orig = x_norm * sig + mu
+        img_vis = img_vis * sig[0] + mu[0]
+
+        # 按每张图的 min / max 拉伸到 [0,1]
+        min_val = img_vis.min()
+        max_val = img_vis.max()
+        img_vis = (img_vis - min_val) / (max_val - min_val + 1e-8)
 
         save_path = os.path.join(
             out_dir,
