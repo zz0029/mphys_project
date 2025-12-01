@@ -1,0 +1,295 @@
+>>> Job started at Mon Dec  1 11:22:53 GMT 2025
+>>> Running /share/nas2_3/yhuang/myrepo/mphys_project/simsearch/simsearch_512.py
+/share/nas2_3/yhuang/byol/runscripts/venv/lib/python3.9/site-packages/umap/distances.py:1063: NumbaDeprecationWarning: The 'nopython' keyword argument was not supplied to the 'numba.jit' decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.
+  @numba.jit()
+/share/nas2_3/yhuang/byol/runscripts/venv/lib/python3.9/site-packages/umap/distances.py:1071: NumbaDeprecationWarning: The 'nopython' keyword argument was not supplied to the 'numba.jit' decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.
+  @numba.jit()
+/share/nas2_3/yhuang/byol/runscripts/venv/lib/python3.9/site-packages/umap/distances.py:1086: NumbaDeprecationWarning: The 'nopython' keyword argument was not supplied to the 'numba.jit' decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.
+  @numba.jit()
+/share/nas2_3/yhuang/byol/runscripts/venv/lib/python3.9/site-packages/umap/umap_.py:660: NumbaDeprecationWarning: The 'nopython' keyword argument was not supplied to the 'numba.jit' decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.
+  @numba.jit()
+/share/nas2_3/yhuang/byol/runscripts/venv/lib/python3.9/site-packages/umap/__init__.py:36: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+Lightning automatically upgraded your loaded checkpoint from v1.5.6 to v2.0.2. To apply the upgrade to your files permanently, run `python -m pytorch_lightning.utilities.upgrade_checkpoint --file ../../../byol/runscripts/byol.ckpt`
+Removing 49722 samples below angular size threshold.
+Removed 1420 MiraBest samples from RGZ
+(54858, 150, 150, 1)
+Embedding file found. Loading features from disk.
+Fitting reducer
+Reading embedding from file: /share/nas2_3/yhuang/_data/rgz/rgz_embedding_25.parquet
+Performing transformation
+Performing transformation
+Performing transformation
+  0%|          | 0/3 [00:00<?, ?it/s] 33%|███▎      | 1/3 [00:10<00:20, 10.17s/it] 67%|██████▋   | 2/3 [00:10<00:04,  4.29s/it]100%|██████████| 3/3 [00:10<00:00,  2.39s/it]100%|██████████| 3/3 [00:10<00:00,  3.49s/it]
+Performing transformation
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:00<00:00, 34.28it/s]
+ORC UMAP positions:
+0 9.158009 0.024457933
+1 9.159863 0.016918693
+2 9.154278 0.018921215
+3 9.159057 0.01895199
+4 9.152699 0.009850835
+5 9.145883 0.027292334
+6 8.9702 6.8435493
+7 9.165018 0.015885822
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:00<00:00, 85.17it/s]
+===== ORC 最近 RGZ 邻居（在 512D BYOL 空间，cosine similarity）=====
+
+ORC 0:
+  #1: RGZ index 40761, UMAP=(9.1835, 0.0040), cosine_sim=0.9956
+    META for this RGZ sample:
+      size: value=213.605488222
+      mb: value=0
+      id: value=RGZJ213025.5+050117
+      index: value=40761
+  #2: RGZ index 27690, UMAP=(9.1816, -0.0047), cosine_sim=0.9926
+    META for this RGZ sample:
+      size: value=172.610517593
+      mb: value=0
+      id: value=RGZJ222859.2+091327
+      index: value=27690
+  #3: RGZ index 37396, UMAP=(9.1408, 0.0307), cosine_sim=0.9674
+    META for this RGZ sample:
+      size: value=189.615931966
+      mb: value=0
+      id: value=RGZJ121518.0+173006
+      index: value=37396
+  #4: RGZ index 43218, UMAP=(9.2249, 0.0030), cosine_sim=0.9581
+    META for this RGZ sample:
+      size: value=199.570369249
+      mb: value=0
+      id: value=RGZJ001855.1+094012
+      index: value=43218
+  #5: RGZ index 12803, UMAP=(9.1996, -0.0215), cosine_sim=0.9580
+    META for this RGZ sample:
+      size: value=193.883278974
+      mb: value=0
+      id: value=RGZJ080647.9+450455
+      index: value=12803
+
+ORC 1:
+  #1: RGZ index 40761, UMAP=(9.1835, 0.0040), cosine_sim=0.9957
+    META for this RGZ sample:
+      size: value=213.605488222
+      mb: value=0
+      id: value=RGZJ213025.5+050117
+      index: value=40761
+  #2: RGZ index 27690, UMAP=(9.1816, -0.0047), cosine_sim=0.9926
+    META for this RGZ sample:
+      size: value=172.610517593
+      mb: value=0
+      id: value=RGZJ222859.2+091327
+      index: value=27690
+  #3: RGZ index 37396, UMAP=(9.1408, 0.0307), cosine_sim=0.9675
+    META for this RGZ sample:
+      size: value=189.615931966
+      mb: value=0
+      id: value=RGZJ121518.0+173006
+      index: value=37396
+  #4: RGZ index 12803, UMAP=(9.1996, -0.0215), cosine_sim=0.9588
+    META for this RGZ sample:
+      size: value=193.883278974
+      mb: value=0
+      id: value=RGZJ080647.9+450455
+      index: value=12803
+  #5: RGZ index 43218, UMAP=(9.2249, 0.0030), cosine_sim=0.9582
+    META for this RGZ sample:
+      size: value=199.570369249
+      mb: value=0
+      id: value=RGZJ001855.1+094012
+      index: value=43218
+
+ORC 2:
+  #1: RGZ index 40761, UMAP=(9.1835, 0.0040), cosine_sim=0.9948
+    META for this RGZ sample:
+      size: value=213.605488222
+      mb: value=0
+      id: value=RGZJ213025.5+050117
+      index: value=40761
+  #2: RGZ index 27690, UMAP=(9.1816, -0.0047), cosine_sim=0.9920
+    META for this RGZ sample:
+      size: value=172.610517593
+      mb: value=0
+      id: value=RGZJ222859.2+091327
+      index: value=27690
+  #3: RGZ index 37396, UMAP=(9.1408, 0.0307), cosine_sim=0.9686
+    META for this RGZ sample:
+      size: value=189.615931966
+      mb: value=0
+      id: value=RGZJ121518.0+173006
+      index: value=37396
+  #4: RGZ index 12803, UMAP=(9.1996, -0.0215), cosine_sim=0.9593
+    META for this RGZ sample:
+      size: value=193.883278974
+      mb: value=0
+      id: value=RGZJ080647.9+450455
+      index: value=12803
+  #5: RGZ index 43218, UMAP=(9.2249, 0.0030), cosine_sim=0.9563
+    META for this RGZ sample:
+      size: value=199.570369249
+      mb: value=0
+      id: value=RGZJ001855.1+094012
+      index: value=43218
+
+ORC 3:
+  #1: RGZ index 40761, UMAP=(9.1835, 0.0040), cosine_sim=0.9950
+    META for this RGZ sample:
+      size: value=213.605488222
+      mb: value=0
+      id: value=RGZJ213025.5+050117
+      index: value=40761
+  #2: RGZ index 27690, UMAP=(9.1816, -0.0047), cosine_sim=0.9923
+    META for this RGZ sample:
+      size: value=172.610517593
+      mb: value=0
+      id: value=RGZJ222859.2+091327
+      index: value=27690
+  #3: RGZ index 37396, UMAP=(9.1408, 0.0307), cosine_sim=0.9691
+    META for this RGZ sample:
+      size: value=189.615931966
+      mb: value=0
+      id: value=RGZJ121518.0+173006
+      index: value=37396
+  #4: RGZ index 12803, UMAP=(9.1996, -0.0215), cosine_sim=0.9597
+    META for this RGZ sample:
+      size: value=193.883278974
+      mb: value=0
+      id: value=RGZJ080647.9+450455
+      index: value=12803
+  #5: RGZ index 43218, UMAP=(9.2249, 0.0030), cosine_sim=0.9567
+    META for this RGZ sample:
+      size: value=199.570369249
+      mb: value=0
+      id: value=RGZJ001855.1+094012
+      index: value=43218
+
+ORC 4:
+  #1: RGZ index 40761, UMAP=(9.1835, 0.0040), cosine_sim=0.9946
+    META for this RGZ sample:
+      size: value=213.605488222
+      mb: value=0
+      id: value=RGZJ213025.5+050117
+      index: value=40761
+  #2: RGZ index 27690, UMAP=(9.1816, -0.0047), cosine_sim=0.9916
+    META for this RGZ sample:
+      size: value=172.610517593
+      mb: value=0
+      id: value=RGZJ222859.2+091327
+      index: value=27690
+  #3: RGZ index 37396, UMAP=(9.1408, 0.0307), cosine_sim=0.9672
+    META for this RGZ sample:
+      size: value=189.615931966
+      mb: value=0
+      id: value=RGZJ121518.0+173006
+      index: value=37396
+  #4: RGZ index 12803, UMAP=(9.1996, -0.0215), cosine_sim=0.9582
+    META for this RGZ sample:
+      size: value=193.883278974
+      mb: value=0
+      id: value=RGZJ080647.9+450455
+      index: value=12803
+  #5: RGZ index 43218, UMAP=(9.2249, 0.0030), cosine_sim=0.9558
+    META for this RGZ sample:
+      size: value=199.570369249
+      mb: value=0
+      id: value=RGZJ001855.1+094012
+      index: value=43218
+
+ORC 5:
+  #1: RGZ index 40761, UMAP=(9.1835, 0.0040), cosine_sim=0.9960
+    META for this RGZ sample:
+      size: value=213.605488222
+      mb: value=0
+      id: value=RGZJ213025.5+050117
+      index: value=40761
+  #2: RGZ index 27690, UMAP=(9.1816, -0.0047), cosine_sim=0.9931
+    META for this RGZ sample:
+      size: value=172.610517593
+      mb: value=0
+      id: value=RGZJ222859.2+091327
+      index: value=27690
+  #3: RGZ index 37396, UMAP=(9.1408, 0.0307), cosine_sim=0.9681
+    META for this RGZ sample:
+      size: value=189.615931966
+      mb: value=0
+      id: value=RGZJ121518.0+173006
+      index: value=37396
+  #4: RGZ index 12803, UMAP=(9.1996, -0.0215), cosine_sim=0.9604
+    META for this RGZ sample:
+      size: value=193.883278974
+      mb: value=0
+      id: value=RGZJ080647.9+450455
+      index: value=12803
+  #5: RGZ index 43218, UMAP=(9.2249, 0.0030), cosine_sim=0.9593
+    META for this RGZ sample:
+      size: value=199.570369249
+      mb: value=0
+      id: value=RGZJ001855.1+094012
+      index: value=43218
+
+ORC 6:
+  #1: RGZ index 10673, UMAP=(10.2322, 0.9238), cosine_sim=0.8036
+    META for this RGZ sample:
+      size: value=119.021836547
+      mb: value=0
+      id: value=RGZJ085559.3+421014
+      index: value=10673
+  #2: RGZ index 1839, UMAP=(9.1160, 6.7594), cosine_sim=0.7862
+    META for this RGZ sample:
+      size: value=100.483190601
+      mb: value=0
+      id: value=RGZJ002616.6+114630
+      index: value=1839
+  #3: RGZ index 28130, UMAP=(9.2138, -0.0512), cosine_sim=0.7842
+    META for this RGZ sample:
+      size: value=134.237374323
+      mb: value=0
+      id: value=RGZJ233635.8+085152
+      index: value=28130
+  #4: RGZ index 20084, UMAP=(11.6184, 1.6224), cosine_sim=0.7821
+    META for this RGZ sample:
+      size: value=183.641647252
+      mb: value=0
+      id: value=RGZJ113721.3+612001
+      index: value=20084
+  #5: RGZ index 46558, UMAP=(8.9129, 6.9174), cosine_sim=0.7815
+    META for this RGZ sample:
+      size: value=102.049331348
+      mb: value=0
+      id: value=RGZJ071200.5+470406
+      index: value=46558
+
+ORC 7:
+  #1: RGZ index 40761, UMAP=(9.1835, 0.0040), cosine_sim=0.9971
+    META for this RGZ sample:
+      size: value=213.605488222
+      mb: value=0
+      id: value=RGZJ213025.5+050117
+      index: value=40761
+  #2: RGZ index 27690, UMAP=(9.1816, -0.0047), cosine_sim=0.9947
+    META for this RGZ sample:
+      size: value=172.610517593
+      mb: value=0
+      id: value=RGZJ222859.2+091327
+      index: value=27690
+  #3: RGZ index 37396, UMAP=(9.1408, 0.0307), cosine_sim=0.9675
+    META for this RGZ sample:
+      size: value=189.615931966
+      mb: value=0
+      id: value=RGZJ121518.0+173006
+      index: value=37396
+  #4: RGZ index 43218, UMAP=(9.2249, 0.0030), cosine_sim=0.9661
+    META for this RGZ sample:
+      size: value=199.570369249
+      mb: value=0
+      id: value=RGZJ001855.1+094012
+      index: value=43218
+  #5: RGZ index 12803, UMAP=(9.1996, -0.0215), cosine_sim=0.9617
+    META for this RGZ sample:
+      size: value=193.883278974
+      mb: value=0
+      id: value=RGZJ080647.9+450455
+      index: value=12803
+
+Done: neighbour images saved in orc_nearest_rgz_512_cosine
+>>> Job finished at Mon Dec  1 11:28:11 GMT 2025
