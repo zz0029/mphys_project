@@ -9,7 +9,7 @@
 #SBATCH --exclude=compute-0-7
 
 # ======== Path Config ========
-JOB=/share/nas2_3/yhuang/myrepo/mphys_project/simsearch/simsearch.py
+JOB=/share/nas2_3/yhuang/myrepo/mphys_project/simsearch/simsearch_512.py
 
 echo ">>> Job started at $(date)"
 
