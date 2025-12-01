@@ -1,0 +1,1052 @@
+>>> Job started at Mon Dec  1 12:51:46 GMT 2025
+>>> Running /share/nas2_3/yhuang/myrepo/mphys_project/simsearch/simsearch_umap.py
+/share/nas2_3/yhuang/byol/runscripts/venv/lib/python3.9/site-packages/umap/distances.py:1063: NumbaDeprecationWarning: The 'nopython' keyword argument was not supplied to the 'numba.jit' decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.
+  @numba.jit()
+/share/nas2_3/yhuang/byol/runscripts/venv/lib/python3.9/site-packages/umap/distances.py:1071: NumbaDeprecationWarning: The 'nopython' keyword argument was not supplied to the 'numba.jit' decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.
+  @numba.jit()
+/share/nas2_3/yhuang/byol/runscripts/venv/lib/python3.9/site-packages/umap/distances.py:1086: NumbaDeprecationWarning: The 'nopython' keyword argument was not supplied to the 'numba.jit' decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.
+  @numba.jit()
+/share/nas2_3/yhuang/byol/runscripts/venv/lib/python3.9/site-packages/umap/umap_.py:660: NumbaDeprecationWarning: The 'nopython' keyword argument was not supplied to the 'numba.jit' decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.
+  @numba.jit()
+/share/nas2_3/yhuang/byol/runscripts/venv/lib/python3.9/site-packages/umap/__init__.py:36: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+Lightning automatically upgraded your loaded checkpoint from v1.5.6 to v2.0.2. To apply the upgrade to your files permanently, run `python -m pytorch_lightning.utilities.upgrade_checkpoint --file ../../../byol/runscripts/byol.ckpt`
+Removing 49722 samples below angular size threshold.
+Removed 1420 MiraBest samples from RGZ
+(54858, 150, 150, 1)
+Embedding file found. Loading features from disk.
+Fitting reducer
+Reading embedding from file: /share/nas2_3/yhuang/_data/rgz/rgz_embedding_25.parquet
+Performing transformation
+Performing transformation
+Performing transformation
+  0%|          | 0/3 [00:00<?, ?it/s] 33%|███▎      | 1/3 [00:10<00:20, 10.09s/it] 67%|██████▋   | 2/3 [00:10<00:04,  4.29s/it]100%|██████████| 3/3 [00:10<00:00,  2.39s/it]100%|██████████| 3/3 [00:10<00:00,  3.48s/it]
+Performing transformation
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:00<00:00, 30.37it/s]
+ORC UMAP positions:
+0 9.158009 0.024457933
+1 9.159863 0.016918693
+2 9.154278 0.018921215
+3 9.159057 0.01895199
+4 9.152699 0.009850835
+5 9.145883 0.027292334
+6 8.9702 6.8435493
+7 9.165018 0.015885822
+===== ORC 最近 RGZ 邻居（在 UMAP 2D 空间）=====
+
+ORC 0 at UMAP [9.158009   0.02445793]
+  #1: RGZ index 37396, UMAP=(9.1408, 0.0307), dist=0.0183
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 37396
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = 15.599162101745605
+mean  = -0.13406768441200256
+std   = 0.38637423515319824
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 189.615931966, 'mb': 0, 'id': 'RGZJ121518.0+173006', 'index': 37396}
+  size: shape=(), dtype=float64, values=189.615931966
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ121518.0+173006
+  index: shape=(), dtype=int64, values=37396
+============== END DEBUG ==============
+
+  #2: RGZ index 28711, UMAP=(9.1422, 0.0342), dist=0.0185
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 28711
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = 18.704830169677734
+mean  = -0.12095382809638977
+std   = 0.5576497912406921
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 97.4512891196, 'mb': 0, 'id': 'RGZJ001131.7+082333', 'index': 28711}
+  size: shape=(), dtype=float64, values=97.4512891196
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ001131.7+082333
+  index: shape=(), dtype=int64, values=28711
+============== END DEBUG ==============
+
+  #3: RGZ index 13426, UMAP=(9.1612, 0.0448), dist=0.0206
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 13426
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = 18.704830169677734
+mean  = -0.11138632148504257
+std   = 0.610252857208252
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 123.413607056, 'mb': 0, 'id': 'RGZJ090021.5+442013', 'index': 13426}
+  size: shape=(), dtype=float64, values=123.413607056
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ090021.5+442013
+  index: shape=(), dtype=int64, values=13426
+============== END DEBUG ==============
+
+  #4: RGZ index 28397, UMAP=(9.1382, 0.0372), dist=0.0236
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 28397
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = 18.704830169677734
+mean  = -0.11055634170770645
+std   = 0.669954240322113
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 97.9856045527, 'mb': 0, 'id': 'RGZJ230134.1+083756', 'index': 28397}
+  size: shape=(), dtype=float64, values=97.9856045527
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ230134.1+083756
+  index: shape=(), dtype=int64, values=28397
+============== END DEBUG ==============
+
+  #5: RGZ index 40761, UMAP=(9.1835, 0.0040), dist=0.0327
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 40761
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = -0.07707001268863678
+mean  = -0.15098436176776886
+std   = 0.0014937518863007426
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 213.605488222, 'mb': 0, 'id': 'RGZJ213025.5+050117', 'index': 40761}
+  size: shape=(), dtype=float64, values=213.605488222
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ213025.5+050117
+  index: shape=(), dtype=int64, values=40761
+============== END DEBUG ==============
+
+
+ORC 1 at UMAP [9.159863   0.01691869]
+  #1: RGZ index 37396, UMAP=(9.1408, 0.0307), dist=0.0235
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 37396
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = 15.599162101745605
+mean  = -0.13406768441200256
+std   = 0.38637423515319824
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 189.615931966, 'mb': 0, 'id': 'RGZJ121518.0+173006', 'index': 37396}
+  size: shape=(), dtype=float64, values=189.615931966
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ121518.0+173006
+  index: shape=(), dtype=int64, values=37396
+============== END DEBUG ==============
+
+  #2: RGZ index 28711, UMAP=(9.1422, 0.0342), dist=0.0247
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 28711
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = 18.704830169677734
+mean  = -0.12095382809638977
+std   = 0.5576497912406921
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 97.4512891196, 'mb': 0, 'id': 'RGZJ001131.7+082333', 'index': 28711}
+  size: shape=(), dtype=float64, values=97.4512891196
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ001131.7+082333
+  index: shape=(), dtype=int64, values=28711
+============== END DEBUG ==============
+
+  #3: RGZ index 40761, UMAP=(9.1835, 0.0040), dist=0.0269
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 40761
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = -0.07707001268863678
+mean  = -0.15098436176776886
+std   = 0.0014937518863007426
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 213.605488222, 'mb': 0, 'id': 'RGZJ213025.5+050117', 'index': 40761}
+  size: shape=(), dtype=float64, values=213.605488222
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ213025.5+050117
+  index: shape=(), dtype=int64, values=40761
+============== END DEBUG ==============
+
+  #4: RGZ index 13426, UMAP=(9.1612, 0.0448), dist=0.0279
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 13426
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = 18.704830169677734
+mean  = -0.11138632148504257
+std   = 0.610252857208252
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 123.413607056, 'mb': 0, 'id': 'RGZJ090021.5+442013', 'index': 13426}
+  size: shape=(), dtype=float64, values=123.413607056
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ090021.5+442013
+  index: shape=(), dtype=int64, values=13426
+============== END DEBUG ==============
+
+  #5: RGZ index 28397, UMAP=(9.1382, 0.0372), dist=0.0297
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 28397
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = 18.704830169677734
+mean  = -0.11055634170770645
+std   = 0.669954240322113
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 97.9856045527, 'mb': 0, 'id': 'RGZJ230134.1+083756', 'index': 28397}
+  size: shape=(), dtype=float64, values=97.9856045527
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ230134.1+083756
+  index: shape=(), dtype=int64, values=28397
+============== END DEBUG ==============
+
+
+ORC 2 at UMAP [9.154278   0.01892122]
+  #1: RGZ index 37396, UMAP=(9.1408, 0.0307), dist=0.0179
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 37396
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = 15.599162101745605
+mean  = -0.13406768441200256
+std   = 0.38637423515319824
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 189.615931966, 'mb': 0, 'id': 'RGZJ121518.0+173006', 'index': 37396}
+  size: shape=(), dtype=float64, values=189.615931966
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ121518.0+173006
+  index: shape=(), dtype=int64, values=37396
+============== END DEBUG ==============
+
+  #2: RGZ index 28711, UMAP=(9.1422, 0.0342), dist=0.0194
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 28711
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = 18.704830169677734
+mean  = -0.12095382809638977
+std   = 0.5576497912406921
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 97.4512891196, 'mb': 0, 'id': 'RGZJ001131.7+082333', 'index': 28711}
+  size: shape=(), dtype=float64, values=97.4512891196
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ001131.7+082333
+  index: shape=(), dtype=int64, values=28711
+============== END DEBUG ==============
+
+  #3: RGZ index 28397, UMAP=(9.1382, 0.0372), dist=0.0244
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 28397
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = 18.704830169677734
+mean  = -0.11055634170770645
+std   = 0.669954240322113
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 97.9856045527, 'mb': 0, 'id': 'RGZJ230134.1+083756', 'index': 28397}
+  size: shape=(), dtype=float64, values=97.9856045527
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ230134.1+083756
+  index: shape=(), dtype=int64, values=28397
+============== END DEBUG ==============
+
+  #4: RGZ index 13426, UMAP=(9.1612, 0.0448), dist=0.0268
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 13426
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = 18.704830169677734
+mean  = -0.11138632148504257
+std   = 0.610252857208252
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 123.413607056, 'mb': 0, 'id': 'RGZJ090021.5+442013', 'index': 13426}
+  size: shape=(), dtype=float64, values=123.413607056
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ090021.5+442013
+  index: shape=(), dtype=int64, values=13426
+============== END DEBUG ==============
+
+  #5: RGZ index 40761, UMAP=(9.1835, 0.0040), dist=0.0328
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 40761
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = -0.07707001268863678
+mean  = -0.15098436176776886
+std   = 0.0014937518863007426
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 213.605488222, 'mb': 0, 'id': 'RGZJ213025.5+050117', 'index': 40761}
+  size: shape=(), dtype=float64, values=213.605488222
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ213025.5+050117
+  index: shape=(), dtype=int64, values=40761
+============== END DEBUG ==============
+
+
+ORC 3 at UMAP [9.159057   0.01895199]
+  #1: RGZ index 37396, UMAP=(9.1408, 0.0307), dist=0.0217
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 37396
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = 15.599162101745605
+mean  = -0.13406768441200256
+std   = 0.38637423515319824
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 189.615931966, 'mb': 0, 'id': 'RGZJ121518.0+173006', 'index': 37396}
+  size: shape=(), dtype=float64, values=189.615931966
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ121518.0+173006
+  index: shape=(), dtype=int64, values=37396
+============== END DEBUG ==============
+
+  #2: RGZ index 28711, UMAP=(9.1422, 0.0342), dist=0.0227
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 28711
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = 18.704830169677734
+mean  = -0.12095382809638977
+std   = 0.5576497912406921
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 97.4512891196, 'mb': 0, 'id': 'RGZJ001131.7+082333', 'index': 28711}
+  size: shape=(), dtype=float64, values=97.4512891196
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ001131.7+082333
+  index: shape=(), dtype=int64, values=28711
+============== END DEBUG ==============
+
+  #3: RGZ index 13426, UMAP=(9.1612, 0.0448), dist=0.0259
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 13426
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = 18.704830169677734
+mean  = -0.11138632148504257
+std   = 0.610252857208252
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 123.413607056, 'mb': 0, 'id': 'RGZJ090021.5+442013', 'index': 13426}
+  size: shape=(), dtype=float64, values=123.413607056
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ090021.5+442013
+  index: shape=(), dtype=int64, values=13426
+============== END DEBUG ==============
+
+  #4: RGZ index 28397, UMAP=(9.1382, 0.0372), dist=0.0277
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 28397
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = 18.704830169677734
+mean  = -0.11055634170770645
+std   = 0.669954240322113
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 97.9856045527, 'mb': 0, 'id': 'RGZJ230134.1+083756', 'index': 28397}
+  size: shape=(), dtype=float64, values=97.9856045527
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ230134.1+083756
+  index: shape=(), dtype=int64, values=28397
+============== END DEBUG ==============
+
+  #5: RGZ index 40761, UMAP=(9.1835, 0.0040), dist=0.0287
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 40761
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = -0.07707001268863678
+mean  = -0.15098436176776886
+std   = 0.0014937518863007426
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 213.605488222, 'mb': 0, 'id': 'RGZJ213025.5+050117', 'index': 40761}
+  size: shape=(), dtype=float64, values=213.605488222
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ213025.5+050117
+  index: shape=(), dtype=int64, values=40761
+============== END DEBUG ==============
+
+
+ORC 4 at UMAP [9.152699   0.00985084]
+  #1: RGZ index 37396, UMAP=(9.1408, 0.0307), dist=0.0240
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 37396
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = 15.599162101745605
+mean  = -0.13406768441200256
+std   = 0.38637423515319824
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 189.615931966, 'mb': 0, 'id': 'RGZJ121518.0+173006', 'index': 37396}
+  size: shape=(), dtype=float64, values=189.615931966
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ121518.0+173006
+  index: shape=(), dtype=int64, values=37396
+============== END DEBUG ==============
+
+  #2: RGZ index 28711, UMAP=(9.1422, 0.0342), dist=0.0265
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 28711
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = 18.704830169677734
+mean  = -0.12095382809638977
+std   = 0.5576497912406921
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 97.4512891196, 'mb': 0, 'id': 'RGZJ001131.7+082333', 'index': 28711}
+  size: shape=(), dtype=float64, values=97.4512891196
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ001131.7+082333
+  index: shape=(), dtype=int64, values=28711
+============== END DEBUG ==============
+
+  #3: RGZ index 28397, UMAP=(9.1382, 0.0372), dist=0.0310
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 28397
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = 18.704830169677734
+mean  = -0.11055634170770645
+std   = 0.669954240322113
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 97.9856045527, 'mb': 0, 'id': 'RGZJ230134.1+083756', 'index': 28397}
+  size: shape=(), dtype=float64, values=97.9856045527
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ230134.1+083756
+  index: shape=(), dtype=int64, values=28397
+============== END DEBUG ==============
+
+  #4: RGZ index 40761, UMAP=(9.1835, 0.0040), dist=0.0314
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 40761
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = -0.07707001268863678
+mean  = -0.15098436176776886
+std   = 0.0014937518863007426
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 213.605488222, 'mb': 0, 'id': 'RGZJ213025.5+050117', 'index': 40761}
+  size: shape=(), dtype=float64, values=213.605488222
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ213025.5+050117
+  index: shape=(), dtype=int64, values=40761
+============== END DEBUG ==============
+
+  #5: RGZ index 27690, UMAP=(9.1816, -0.0047), dist=0.0324
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 27690
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = -0.0031255194917321205
+mean  = -0.15063728392124176
+std   = 0.005476533435285091
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 172.610517593, 'mb': 0, 'id': 'RGZJ222859.2+091327', 'index': 27690}
+  size: shape=(), dtype=float64, values=172.610517593
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ222859.2+091327
+  index: shape=(), dtype=int64, values=27690
+============== END DEBUG ==============
+
+
+ORC 5 at UMAP [9.145883   0.02729233]
+  #1: RGZ index 37396, UMAP=(9.1408, 0.0307), dist=0.0061
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 37396
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = 15.599162101745605
+mean  = -0.13406768441200256
+std   = 0.38637423515319824
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 189.615931966, 'mb': 0, 'id': 'RGZJ121518.0+173006', 'index': 37396}
+  size: shape=(), dtype=float64, values=189.615931966
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ121518.0+173006
+  index: shape=(), dtype=int64, values=37396
+============== END DEBUG ==============
+
+  #2: RGZ index 28711, UMAP=(9.1422, 0.0342), dist=0.0078
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 28711
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = 18.704830169677734
+mean  = -0.12095382809638977
+std   = 0.5576497912406921
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 97.4512891196, 'mb': 0, 'id': 'RGZJ001131.7+082333', 'index': 28711}
+  size: shape=(), dtype=float64, values=97.4512891196
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ001131.7+082333
+  index: shape=(), dtype=int64, values=28711
+============== END DEBUG ==============
+
+  #3: RGZ index 28397, UMAP=(9.1382, 0.0372), dist=0.0126
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 28397
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = 18.704830169677734
+mean  = -0.11055634170770645
+std   = 0.669954240322113
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 97.9856045527, 'mb': 0, 'id': 'RGZJ230134.1+083756', 'index': 28397}
+  size: shape=(), dtype=float64, values=97.9856045527
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ230134.1+083756
+  index: shape=(), dtype=int64, values=28397
+============== END DEBUG ==============
+
+  #4: RGZ index 13426, UMAP=(9.1612, 0.0448), dist=0.0233
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 13426
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = 18.704830169677734
+mean  = -0.11138632148504257
+std   = 0.610252857208252
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 123.413607056, 'mb': 0, 'id': 'RGZJ090021.5+442013', 'index': 13426}
+  size: shape=(), dtype=float64, values=123.413607056
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ090021.5+442013
+  index: shape=(), dtype=int64, values=13426
+============== END DEBUG ==============
+
+  #5: RGZ index 12435, UMAP=(9.1202, 0.0386), dist=0.0280
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 12435
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = 18.704830169677734
+mean  = -0.10738728195428848
+std   = 0.6756617426872253
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 140.358948413, 'mb': 0, 'id': 'RGZJ095819.6+472507', 'index': 12435}
+  size: shape=(), dtype=float64, values=140.358948413
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ095819.6+472507
+  index: shape=(), dtype=int64, values=12435
+============== END DEBUG ==============
+
+
+ORC 6 at UMAP [8.9702    6.8435493]
+  #1: RGZ index 42904, UMAP=(8.9784, 6.8629), dist=0.0210
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 42904
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = 18.704830169677734
+mean  = 1.1364647150039673
+std   = 2.1057288646698
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 121.421261241, 'mb': 0, 'id': 'RGZJ080343.2+095735', 'index': 42904}
+  size: shape=(), dtype=float64, values=121.421261241
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ080343.2+095735
+  index: shape=(), dtype=int64, values=42904
+============== END DEBUG ==============
+
+  #2: RGZ index 38620, UMAP=(8.9951, 6.8638), dist=0.0321
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 38620
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = 18.704830169677734
+mean  = 0.6968722939491272
+std   = 2.125708818435669
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 87.8890165861, 'mb': 0, 'id': 'RGZJ120112.9+313827', 'index': 38620}
+  size: shape=(), dtype=float64, values=87.8890165861
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ120112.9+313827
+  index: shape=(), dtype=int64, values=38620
+============== END DEBUG ==============
+
+  #3: RGZ index 54210, UMAP=(8.9971, 6.8144), dist=0.0397
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 54210
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = 18.704830169677734
+mean  = 0.5184699296951294
+std   = 1.2801868915557861
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 117.518494574, 'mb': 0, 'id': 'RGZJ145132.6+335749', 'index': 54210}
+  size: shape=(), dtype=float64, values=117.518494574
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ145132.6+335749
+  index: shape=(), dtype=int64, values=54210
+============== END DEBUG ==============
+
+  #4: RGZ index 25067, UMAP=(8.9977, 6.8786), dist=0.0445
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 25067
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = 18.704830169677734
+mean  = 0.30608317255973816
+std   = 1.1984870433807373
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 83.6069375544, 'mb': 0, 'id': 'RGZJ133458.0+015336', 'index': 25067}
+  size: shape=(), dtype=float64, values=83.6069375544
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ133458.0+015336
+  index: shape=(), dtype=int64, values=25067
+============== END DEBUG ==============
+
+  #5: RGZ index 19039, UMAP=(9.0188, 6.8554), dist=0.0500
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 19039
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = 18.704830169677734
+mean  = 0.6397086977958679
+std   = 1.9039266109466553
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 67.5666941814, 'mb': 0, 'id': 'RGZJ122054.1+634023', 'index': 19039}
+  size: shape=(), dtype=float64, values=67.5666941814
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ122054.1+634023
+  index: shape=(), dtype=int64, values=19039
+============== END DEBUG ==============
+
+
+ORC 7 at UMAP [9.165018   0.01588582]
+  #1: RGZ index 40761, UMAP=(9.1835, 0.0040), dist=0.0220
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 40761
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = -0.07707001268863678
+mean  = -0.15098436176776886
+std   = 0.0014937518863007426
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 213.605488222, 'mb': 0, 'id': 'RGZJ213025.5+050117', 'index': 40761}
+  size: shape=(), dtype=float64, values=213.605488222
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ213025.5+050117
+  index: shape=(), dtype=int64, values=40761
+============== END DEBUG ==============
+
+  #2: RGZ index 27690, UMAP=(9.1816, -0.0047), dist=0.0265
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 27690
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = -0.0031255194917321205
+mean  = -0.15063728392124176
+std   = 0.005476533435285091
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 172.610517593, 'mb': 0, 'id': 'RGZJ222859.2+091327', 'index': 27690}
+  size: shape=(), dtype=float64, values=172.610517593
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ222859.2+091327
+  index: shape=(), dtype=int64, values=27690
+============== END DEBUG ==============
+
+  #3: RGZ index 37396, UMAP=(9.1408, 0.0307), dist=0.0284
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 37396
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = 15.599162101745605
+mean  = -0.13406768441200256
+std   = 0.38637423515319824
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 189.615931966, 'mb': 0, 'id': 'RGZJ121518.0+173006', 'index': 37396}
+  size: shape=(), dtype=float64, values=189.615931966
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ121518.0+173006
+  index: shape=(), dtype=int64, values=37396
+============== END DEBUG ==============
+
+  #4: RGZ index 13426, UMAP=(9.1612, 0.0448), dist=0.0291
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 13426
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = 18.704830169677734
+mean  = -0.11138632148504257
+std   = 0.610252857208252
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 123.413607056, 'mb': 0, 'id': 'RGZJ090021.5+442013', 'index': 13426}
+  size: shape=(), dtype=float64, values=123.413607056
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ090021.5+442013
+  index: shape=(), dtype=int64, values=13426
+============== END DEBUG ==============
+
+  #5: RGZ index 28711, UMAP=(9.1422, 0.0342), dist=0.0292
+
+DEBUG: RAW RGZ IMAGE TENSOR
+rgz_idx = 28711
+shape = torch.Size([1, 70, 70])
+min   = -0.151014506816864
+max   = 18.704830169677734
+mean  = -0.12095382809638977
+std   = 0.5576497912406921
+full image tensor:
+tensor([[[-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         ...,
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510],
+         [-0.1510, -0.1510, -0.1510,  ..., -0.1510, -0.1510, -0.1510]]])
+META for this RGZ sample:
+{'size': 97.4512891196, 'mb': 0, 'id': 'RGZJ001131.7+082333', 'index': 28711}
+  size: shape=(), dtype=float64, values=97.4512891196
+  mb: shape=(), dtype=int64, values=0
+  id: shape=(), dtype=<U19, values=RGZJ001131.7+082333
+  index: shape=(), dtype=int64, values=28711
+============== END DEBUG ==============
+
+>>> Job finished at Mon Dec  1 12:57:07 GMT 2025

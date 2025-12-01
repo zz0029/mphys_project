@@ -1,0 +1,3 @@
+>>> Job started at Mon Dec  1 12:49:47 GMT 2025
+>>> Running /share/nas2_3/yhuang/myrepo/mphys_project/simsearch/simsearch_umap.py
+slurmstepd: error: *** JOB 151065 ON compute-0-1 CANCELLED AT 2025-12-01T12:49:57 ***
