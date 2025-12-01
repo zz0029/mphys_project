@@ -8,9 +8,9 @@ import astropy.units as u
 import matplotlib.pyplot as plt
 
 # Input parameters
-IMG_PATH = "../orc_fits/image.i.EMU_0857-04A.SB71464.cont.taylor.0.restored.conv.fits"
-ORC_RA_DEG  = 132.3645
-ORC_DEC_DEG = -4.956
+IMG_PATH = "../simsearch/rgz_fits/J121518+173006.fits"
+ORC_RA_DEG  = 183.83
+ORC_DEC_DEG = 17.50
 
 # Read the ORC FITS image and get HDUList
 hdul = fits.open(IMG_PATH)
