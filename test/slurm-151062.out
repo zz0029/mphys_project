@@ -1,0 +1,14 @@
+>>> Job started at Mon Dec  1 11:02:01 GMT 2025
+>>> Running /share/nas2_3/yhuang/myrepo/mphys_project/test/test.py
+indices (每行是一个 ORC 的邻居 RGZ 索引):
+[[0 3]
+ [2 4]]
+
+distances (对应的 cosine 距离 = 1 - cos_sim):
+[[0.00496281 0.2260427 ]
+ [0.         0.29289322]]
+
+cosine similarities:
+[[0.99503719 0.7739573 ]
+ [1.         0.70710678]]
+>>> Job finished at Mon Dec  1 11:02:09 GMT 2025
