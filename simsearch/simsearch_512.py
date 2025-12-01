@@ -345,8 +345,18 @@ for orc_idx, (dists, idxs) in enumerate(zip(distances, indices)):
         # 从 Dataset 里取图像
         img, meta = rgz[rgz_idx]  # img: Tensor [1, H, W]
 
-        # 可视化用的 tensor（已经是归一化后的单通道图像）
+        # ---- 为了能看清细节，对图像做反归一化 + 按每张图单独拉伸到 [0,1] ----
+        # 当前 img 已经经过 Normalize((mu,), (sig,))，大部分像素在 [-几, 几] 之间，
+        # 直接保存会被截断成全黑。所以这里先还原，再做 min-max 归一化。
         img_vis = img.clone()
+
+        # 反归一化：x_orig = x_norm * sig + mu
+        img_vis = img_vis * sig + mu
+
+        # 按每张图的 min / max 拉伸到 [0,1]
+        min_val = img_vis.min()
+        max_val = img_vis.max()
+        img_vis = (img_vis - min_val) / (max_val - min_val + 1e-8)
 
         save_path = os.path.join(
             out_dir,
