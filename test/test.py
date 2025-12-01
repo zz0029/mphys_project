@@ -1,35 +1,33 @@
+import os
+
+os.environ["MKL_THREADING_LAYER"] = "TBB"
+
+import pylab as pl
 import numpy as np
-from sklearn.neighbors import NearestNeighbors
+import pandas as pd
+from tqdm import tqdm
 
-# 假装这是 RGZ 的 512D 特征，这里用 3 维、5 个样本演示
-rgz_features_512 = np.array([
-    [1.0, 0.0, 0.0],   # RGZ 0
-    [0.0, 1.0, 0.0],   # RGZ 1
-    [0.0, 0.0, 1.0],   # RGZ 2
-    [1.0, 1.0, 0.0],   # RGZ 3
-    [1.0, 0.0, 1.0],   # RGZ 4
-])
+import torch
+import torchvision.transforms as T
+from torch.utils.data import DataLoader
 
-# 假装这是 ORC 的特征：2 个 ORC
-orc_features_512 = np.array([
-    [1.0, 0.1, 0.0],   # ORC 0
-    [0.0, 0.0, 1.0],   # ORC 1
-])
+from sklearn.decomposition import PCA
+from umap import UMAP
 
-K = 2  # 每个 ORC 找 2 个最近邻
-nn = NearestNeighbors(n_neighbors=K, metric="cosine")
-nn.fit(rgz_features_512)
+from byol.datasets import RGZ108k
+from byol.datasets import MBFRFull, MBHybrid, MBFRConfident, MBFRUncertain
+from byol.models import BYOL
 
-# distances = 1 - cosine_similarity
-distances, indices = nn.kneighbors(orc_features_512)
+# ================== BYOL checkpoint ==================
+ckpt = "/share/nas2_3/yhuang/byol/runscripts/byol.ckpt"
 
-print("indices (每行是一个 ORC 的邻居 RGZ 索引):")
-print(indices)
+# Load model from checkpoint (pre-trained weights):
+byol = BYOL.load_from_checkpoint(ckpt)
+byol.eval()
+encoder = byol.encoder
+encoder.eval()
+config = byol.config
+mu, sig = config["data"]["mu"], config["data"]["sig"]
 
-print("\ndistances (对应的 cosine 距离 = 1 - cos_sim):")
-print(distances)
-
-# 也可以把它们转回 cosine similarity 看：
-cos_sims = 1.0 - distances
-print("\ncosine similarities:")
-print(cos_sims)
+print(mu, type(mu))
+print(sig, type(sig))
