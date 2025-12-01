@@ -351,7 +351,7 @@ for orc_idx, (dists, idxs) in enumerate(zip(distances, indices)):
         img_vis = img.clone()
 
         # 反归一化：x_orig = x_norm * sig + mu
-        img_vis = img_vis * sig + mu
+        img_vis = img_vis * sig[0] + mu[0]
 
         # 按每张图的 min / max 拉伸到 [0,1]
         min_val = img_vis.min()
