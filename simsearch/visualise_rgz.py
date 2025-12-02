@@ -8,9 +8,20 @@ import astropy.units as u
 import matplotlib.pyplot as plt
 
 # Input parameters
-IMG_PATH = "../simsearch/rgz_fits/J121518+173006.fits"
-ORC_RA_DEG  = 183.83
-ORC_DEC_DEG = 17.50
+IMG_PATH = "rgz_fits/J071200+470406.fits"
+IMG_Cata = "rgz_cata/J071200+470406.txt"
+# Read catalog (TXT) and load RA/DEC
+with open(IMG_Cata, 'r') as f:
+    lines = f.readlines()
+
+# Skip comment lines starting with "#"
+for line in lines:
+    if not line.strip().startswith("#") and line.strip():
+        parts = line.strip().split(",")
+        ORC_RA_DEG = float(parts[1])
+        ORC_DEC_DEG = float(parts[2])
+        print(f"Loaded from catalog: RA={ORC_RA_DEG}, DEC={ORC_DEC_DEG}")
+        break
 
 # Read the ORC FITS image and get HDUList
 hdul = fits.open(IMG_PATH)
@@ -59,12 +70,11 @@ scales_deg = proj_plane_pixel_scales(wcs)   # deg/pix, order ~ (y, x)
 sx_as = scales_deg[1]*3600.0
 sy_as = scales_deg[0]*3600.0
 
-# 4) 3 arcmin 半径 → 像素
-r_as = 1.5*60.0
-rx = r_as / sx_as
-ry = r_as / sy_as
+# 4) zoom 尺寸 （像素）
+rx = 60
+ry = 60
 
-# 5) 设定视野窗口（以 ORC 为中心、3' 半径）
+# 5) 设定视野窗口
 ax.set_xlim(cx - rx, cx + rx)
 ax.set_ylim(cy - ry, cy + ry)
 
@@ -77,8 +87,8 @@ levels = med + std * np.array([3,5,8,12])   # 用你前面算的 med/std
 ax.contour(hdu_data, levels=levels, colors='red', linewidths=0.3, alpha=0.8)
 
 # Label the coordinates
-# ax.scatter(ORC_RA_DEG, ORC_DEC_DEG,
-#            s=80, facecolors='none', edgecolors='blue', linewidths=1.8,
-#            transform=ax.get_transform('world'), zorder=5)
+ax.scatter(ORC_RA_DEG, ORC_DEC_DEG,
+           s=80, facecolors='none', edgecolors='blue', linewidths=1.8,
+           transform=ax.get_transform('world'), zorder=5)
 
 plt.show()
