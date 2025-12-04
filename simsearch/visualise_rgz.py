@@ -8,8 +8,8 @@ import astropy.units as u
 import matplotlib.pyplot as plt
 
 # Input parameters
-IMG_PATH = "rgz_fits/J071200+470406.fits"
-IMG_Cata = "rgz_cata/J071200+470406.txt"
+IMG_PATH = "rgz_fits/J080647+450455.fits"
+IMG_Cata = "rgz_cata/J080647+450455.txt"
 # Read catalog (TXT) and load RA/DEC
 with open(IMG_Cata, 'r') as f:
     lines = f.readlines()
@@ -71,8 +71,8 @@ sx_as = scales_deg[1]*3600.0
 sy_as = scales_deg[0]*3600.0
 
 # 4) zoom 尺寸 （像素）
-rx = 60
-ry = 60
+rx = 50
+ry = 50
 
 # 5) 设定视野窗口
 ax.set_xlim(cx - rx, cx + rx)
