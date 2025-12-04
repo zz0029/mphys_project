@@ -350,26 +350,26 @@ for orc_idx, (dists, idxs) in enumerate(zip(distances, indices)):
         # ---- 为了能看清细节：使用和 visualise_rgz.py 相同的归一化逻辑 ----
         # 1. 反归一化：x_orig = x_norm * sig + mu  （把 BYOL 训练时的 Normalize 撤销）
         img_vis = img.clone()
-        img_vis = img_vis * sig[0] + mu[0]   # shape: [1, H, W]
-
-        # 2. 转成 numpy 数组，去掉通道维度，方便用 astropy 的工具
-        img_np = img_vis.squeeze(0).cpu().numpy()   # shape: [H, W]
-
-        # 3. 计算 sigma-clipped 统计量（保持和 visualise_rgz.py 一致，虽然这里只是为了完整性）
-        mean, med, std = sigma_clipped_stats(img_np, sigma=3.0)
-
-        # 4. 定义归一化：使用百分位截断 + asinh 拉伸（和你的示例代码一致）
-        norm = ImageNormalize(
-            img_np,
-            interval=PercentileInterval(99.5),   # 或 99.7，根据你在 visualise_rgz.py 中使用的值
-            stretch=AsinhStretch(),
-        )
-
-        # 5. 应用归一化，得到 [0,1] 的 2D 数组
-        img_norm = norm(img_np).astype("float32")   # shape [H, W], values in [0,1]
-
-        # 6. 再转回 torch.Tensor，并加回单通道维度，供 save_image 使用
-        img_vis = torch.from_numpy(img_norm).unsqueeze(0)  # [1, H, W]
+        # img_vis = img_vis * sig[0] + mu[0]   # shape: [1, H, W]
+        #
+        # # 2. 转成 numpy 数组，去掉通道维度，方便用 astropy 的工具
+        # img_np = img_vis.squeeze(0).cpu().numpy()   # shape: [H, W]
+        #
+        # # 3. 计算 sigma-clipped 统计量（保持和 visualise_rgz.py 一致，虽然这里只是为了完整性）
+        # mean, med, std = sigma_clipped_stats(img_np, sigma=3.0)
+        #
+        # # 4. 定义归一化：使用百分位截断 + asinh 拉伸（和你的示例代码一致）
+        # norm = ImageNormalize(
+        #     img_np,
+        #     interval=PercentileInterval(99.5),   # 或 99.7，根据你在 visualise_rgz.py 中使用的值
+        #     stretch=AsinhStretch(),
+        # )
+        #
+        # # 5. 应用归一化，得到 [0,1] 的 2D 数组
+        # img_norm = norm(img_np).astype("float32")   # shape [H, W], values in [0,1]
+        #
+        # # 6. 再转回 torch.Tensor，并加回单通道维度，供 save_image 使用
+        # img_vis = torch.from_numpy(img_norm).unsqueeze(0)  # [1, H, W]
 
         save_path = os.path.join(
             out_dir,
